@@ -1,0 +1,2240 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Kit | Finanze</title>
+  <meta name="robots" content="noindex">
+  <!-- Swiper 11 -->
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <!-- Bootstrap Grid System -->
+  <link rel="stylesheet" href="assets/css/bootstrap-grid.min.css">
+  <!-- CSS propio (incluye @import Google Fonts) -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <!-- ELEMENTOS · Cards -->
+    <section class="kit-section" id="cards">
+      <h2 class="kit-section__title">Cards</h2>
+      <p class="kit-section__desc">
+        Card de diferenciadores de valor (ícono + título + descripción). Fondo blanco en reposo;
+        al hover invierte a la superficie cobalt (<code>--color-bg-surface</code>, uso puntual).
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <div class="card-feature">
+            <span class="card-feature__icon"><i data-lucide="chart-column"></i></span>
+            <h4 class="card-feature__title">Expert knowledge</h4>
+            <p class="card-feature__desc">Expert financial planning and strategic insights to drive sustainable growth.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <div class="card-feature is-hover">
+            <span class="card-feature__icon"><i data-lucide="chart-column"></i></span>
+            <h4 class="card-feature__title">Expert knowledge</h4>
+            <p class="card-feature__desc">Expert financial planning and strategic insights to drive sustainable growth.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="card-feature"&gt;
+  &lt;span class="card-feature__icon"&gt;&lt;i data-lucide="chart-column"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;h4 class="card-feature__title"&gt;Expert knowledge&lt;/h4&gt;
+  &lt;p class="card-feature__desc"&gt;Expert financial planning and strategic insights to drive sustainable growth.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · FAQ -->
+    <section class="kit-section" id="faq">
+      <h2 class="kit-section__title">FAQ</h2>
+      <p class="kit-section__desc">
+        Acordeón de preguntas frecuentes. Un solo item abierto a la vez; el ícono <code>+</code> rota e
+        invierte a <code>−</code> y se revela la respuesta con una división superior.
+      </p>
+
+      <div class="faq-list">
+
+        <div class="faq-item is-active">
+          <button class="faq-item__question" type="button" aria-expanded="true" aria-controls="faq-answer-1">
+            <span>What services do you offer?</span>
+            <span class="faq-item__icon">
+              <i data-lucide="plus" class="faq-item__icon-plus"></i>
+              <i data-lucide="minus" class="faq-item__icon-minus"></i>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-1">
+            <div class="faq-item__answer-inner">
+              <p>We provide a range of financial and consulting services including business strategy, financial planning, investment advisory, risk management, and operational consulting to help businesses grow and succeed.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-answer-2">
+            <span>Who can benefit from your consulting services?</span>
+            <span class="faq-item__icon">
+              <i data-lucide="plus" class="faq-item__icon-plus"></i>
+              <i data-lucide="minus" class="faq-item__icon-minus"></i>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-2">
+            <div class="faq-item__answer-inner">
+              <p>Our services are built for startups, small businesses, and established companies looking to strengthen their financial strategy, streamline operations, and plan for sustainable growth.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-answer-3">
+            <span>How do you create a financial strategy for clients?</span>
+            <span class="faq-item__icon">
+              <i data-lucide="plus" class="faq-item__icon-plus"></i>
+              <i data-lucide="minus" class="faq-item__icon-minus"></i>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-3">
+            <div class="faq-item__answer-inner">
+              <p>We start with a full review of your current financial position, then build a tailored strategy around your goals, industry, and risk tolerance, revisiting it regularly as your business evolves.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+            <span>Do you offer personalized financial advice?</span>
+            <span class="faq-item__icon">
+              <i data-lucide="plus" class="faq-item__icon-plus"></i>
+              <i data-lucide="minus" class="faq-item__icon-minus"></i>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-4">
+            <div class="faq-item__answer-inner">
+              <p>Yes. Every engagement starts with a one-on-one consultation so our recommendations reflect your specific numbers, goals, and constraints, not a generic template.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-answer-5">
+            <span>How do you ensure confidentiality of financial information?</span>
+            <span class="faq-item__icon">
+              <i data-lucide="plus" class="faq-item__icon-plus"></i>
+              <i data-lucide="minus" class="faq-item__icon-minus"></i>
+            </span>
+          </button>
+          <div class="faq-item__answer" id="faq-answer-5">
+            <div class="faq-item__answer-inner">
+              <p>All client data is handled under strict confidentiality agreements and stored on secure, access-controlled systems, reviewed regularly to meet industry compliance standards.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="faq-item"&gt;
+  &lt;button class="faq-item__question" type="button" aria-expanded="false" aria-controls="faq-answer-1"&gt;
+    &lt;span&gt;What services do you offer?&lt;/span&gt;
+    &lt;span class="faq-item__icon"&gt;
+      &lt;i data-lucide="plus" class="faq-item__icon-plus"&gt;&lt;/i&gt;
+      &lt;i data-lucide="minus" class="faq-item__icon-minus"&gt;&lt;/i&gt;
+    &lt;/span&gt;
+  &lt;/button&gt;
+  &lt;div class="faq-item__answer" id="faq-answer-1"&gt;
+    &lt;div class="faq-item__answer-inner"&gt;
+      &lt;p&gt;Respuesta…&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- .is-active en .faq-item = estado abierto. El toggle vive en main.js
+     (initFaqAccordion), un solo item abierto a la vez. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Button Elite -->
+    <section class="kit-section" id="button-elite">
+      <h2 class="kit-section__title">Button Elite</h2>
+      <p class="kit-section__desc">
+        CTA píldora con badge circular. Fondo <code>--color-bg-surface</code> en reposo; al hover una
+        cortina horizontal (izquierda → derecha) cubre el botón con <code>--color-secondary</code>.
+      </p>
+
+      <div class="row g-4 align-items-center">
+        <div class="col-auto">
+          <span class="kit-demo-label">Default</span>
+          <a href="#" class="button-elite">
+            <span class="button-elite__label">Learn More About</span>
+            <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+          </a>
+        </div>
+
+        <div class="col-auto">
+          <span class="kit-demo-label">Hover</span>
+          <a href="#" class="button-elite is-hover">
+            <span class="button-elite__label">Learn More About</span>
+            <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="button-elite"&gt;
+  &lt;span class="button-elite__label"&gt;Learn More About&lt;/span&gt;
+  &lt;span class="button-elite__icon"&gt;&lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-visible).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Badges -->
+    <section class="kit-section" id="badges">
+      <h2 class="kit-section__title">Badges</h2>
+      <p class="kit-section__desc">
+        Etiqueta/eyebrow con ícono, para usar sobre un <code>section-header</code>. Variante
+        <code>--light</code> sobre fondo claro, <code>--transparent</code> sobre fondo oscuro.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-auto">
+          <span class="kit-demo-label">Light</span>
+          <span class="badge badge--light">
+            <i data-lucide="asterisk" class="badge__icon"></i>
+            <span class="badge__label">Our Projects</span>
+          </span>
+        </div>
+
+        <div class="col-auto">
+          <span class="kit-demo-label">Transparent (sobre fondo oscuro)</span>
+          <div class="kit-demo--dark">
+            <span class="badge badge--transparent">
+              <i data-lucide="asterisk" class="badge__icon"></i>
+              <span class="badge__label">Industries We Serve</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;!-- Variante light — sobre fondo claro --&gt;
+&lt;span class="badge badge--light"&gt;
+  &lt;i data-lucide="asterisk" class="badge__icon"&gt;&lt;/i&gt;
+  &lt;span class="badge__label"&gt;Our Projects&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Variante transparent — sobre fondo oscuro --&gt;
+&lt;span class="badge badge--transparent"&gt;
+  &lt;i data-lucide="asterisk" class="badge__icon"&gt;&lt;/i&gt;
+  &lt;span class="badge__label"&gt;Industries We Serve&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Project Item -->
+    <section class="kit-section" id="card-project-item">
+      <h2 class="kit-section__title">Card Project Item</h2>
+      <p class="kit-section__desc">
+        Tarjeta de proyecto/portfolio con imagen. Al hover, la imagen escala levemente y aparece
+        el ícono de flecha sobre un círculo azul en la esquina superior derecha.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <a href="#" class="card-project-item">
+            <img class="card-project-item__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo revisando una estrategia financiera" loading="lazy">
+            <span class="card-project-item__arrow"><i data-lucide="arrow-up-right"></i></span>
+            <div class="card-project-item__panel">
+              <span class="card-project-item__tag">
+                <span class="card-project-item__dot"></span>
+                Financial Planning
+              </span>
+              <h3 class="card-project-item__title">Startup financial strategy development</h3>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <a href="#" class="card-project-item is-hover">
+            <img class="card-project-item__img" src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo analizando riesgo financiero" loading="lazy">
+            <span class="card-project-item__arrow"><i data-lucide="arrow-up-right"></i></span>
+            <div class="card-project-item__panel">
+              <span class="card-project-item__tag">
+                <span class="card-project-item__dot"></span>
+                Risk Management
+              </span>
+              <h3 class="card-project-item__title">Financial Risk Analysis and Protection</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="card-project-item"&gt;
+  &lt;img class="card-project-item__img" src="assets/img/portfolio/proyecto-1.jpg"
+       alt="…" loading="lazy"&gt;
+  &lt;span class="card-project-item__arrow"&gt;&lt;i data-lucide="arrow-up-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;div class="card-project-item__panel"&gt;
+    &lt;span class="card-project-item__tag"&gt;
+      &lt;span class="card-project-item__dot"&gt;&lt;/span&gt;
+      Financial Planning
+    &lt;/span&gt;
+    &lt;h3 class="card-project-item__title"&gt;Startup financial strategy development&lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-visible).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Pricing Tab Item -->
+    <section class="kit-section" id="pricing-tab-item">
+      <h2 class="kit-section__title">Pricing Tab Item</h2>
+      <p class="kit-section__desc">
+        Card de plan de servicio, agrupada en un <code>.pricing-toggle-group</code> junto al switch
+        <code>Monthly / Yearly</code>. El switch alterna la vista de precio de todas las cards del grupo
+        a la vez (ver <code>initPricingToggle</code> en <code>main.js</code>). Variante
+        <code>--active</code> (plan destacado, card central): fondo oscuro que sobresale de la fila
+        + badge "Most Popular" a caballo del borde superior.
+      </p>
+
+      <div class="pricing-toggle-group">
+        <div class="d-flex justify-content-center mb-5">
+          <div class="pricing-toggle">
+            <span class="pricing-toggle__label is-active" data-period="monthly">Monthly</span>
+            <button class="pricing-toggle__switch" type="button" role="switch" aria-checked="false" aria-label="Cambiar a facturación anual">
+              <span class="pricing-toggle__switch-thumb"></span>
+            </button>
+            <span class="pricing-toggle__label" data-period="yearly">Yearly</span>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="pricing-tab-item">
+              <span class="pricing-tab-item__icon"><i data-lucide="database"></i></span>
+              <h4 class="pricing-tab-item__title">Basic Plan</h4>
+              <p class="pricing-tab-item__desc">Ideal for small business &amp; individuals</p>
+
+              <div class="pricing-tab-item__panel">
+                <div class="pricing-tab-item__price">
+                  <span class="pricing-tab-item__price-view is-active" data-period="monthly">
+                    <span class="pricing-tab-item__price-amount">$49.00</span>
+                    <span class="pricing-tab-item__price-period">/Monthly</span>
+                  </span>
+                  <span class="pricing-tab-item__price-view" data-period="yearly">
+                    <span class="pricing-tab-item__price-amount">$490.00</span>
+                    <span class="pricing-tab-item__price-period">/Yearly</span>
+                  </span>
+                </div>
+                <hr class="pricing-tab-item__divider">
+                <p class="pricing-tab-item__included">What's Included:</p>
+                <ul class="pricing-tab-item__features">
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Multi Expert Consulting Team</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">24/7 Priority Support and Services</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Corporate Strategy, Transformation</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Email Support &amp; Guidance</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a href="#" class="button-elite button-elite--block pricing-tab-item__cta">
+                <span class="button-elite__label">Get Started With Plan</span>
+                <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="pricing-tab-item pricing-tab-item--active">
+              <span class="pricing-tab-item__ribbon badge badge--light">
+                <i data-lucide="star" class="badge__icon"></i>
+                Most Popular
+              </span>
+              <span class="pricing-tab-item__icon"><i data-lucide="command"></i></span>
+              <h4 class="pricing-tab-item__title">Standard Plan</h4>
+              <p class="pricing-tab-item__desc">Ideal for small business &amp; individuals</p>
+
+              <div class="pricing-tab-item__panel">
+                <div class="pricing-tab-item__price">
+                  <span class="pricing-tab-item__price-view is-active" data-period="monthly">
+                    <span class="pricing-tab-item__price-amount">$149.00</span>
+                    <span class="pricing-tab-item__price-period">/Monthly</span>
+                  </span>
+                  <span class="pricing-tab-item__price-view" data-period="yearly">
+                    <span class="pricing-tab-item__price-amount">$1,490.00</span>
+                    <span class="pricing-tab-item__price-period">/Yearly</span>
+                  </span>
+                </div>
+                <hr class="pricing-tab-item__divider">
+                <p class="pricing-tab-item__included">What's Included:</p>
+                <ul class="pricing-tab-item__features">
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Multi Expert Consulting Team</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">24/7 Priority Support and Services</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Corporate Strategy, Transformation</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Email Support &amp; Guidance</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a href="#" class="button-elite button-elite--block pricing-tab-item__cta">
+                <span class="button-elite__label">Get Started With Plan</span>
+                <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <div class="pricing-tab-item">
+              <span class="pricing-tab-item__icon"><i data-lucide="layout-dashboard"></i></span>
+              <h4 class="pricing-tab-item__title">Premium Plan</h4>
+              <p class="pricing-tab-item__desc">Ideal for small business &amp; individuals</p>
+
+              <div class="pricing-tab-item__panel">
+                <div class="pricing-tab-item__price">
+                  <span class="pricing-tab-item__price-view is-active" data-period="monthly">
+                    <span class="pricing-tab-item__price-amount">$449.00</span>
+                    <span class="pricing-tab-item__price-period">/Monthly</span>
+                  </span>
+                  <span class="pricing-tab-item__price-view" data-period="yearly">
+                    <span class="pricing-tab-item__price-amount">$4,490.00</span>
+                    <span class="pricing-tab-item__price-period">/Yearly</span>
+                  </span>
+                </div>
+                <hr class="pricing-tab-item__divider">
+                <p class="pricing-tab-item__included">What's Included:</p>
+                <ul class="pricing-tab-item__features">
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Multi Expert Consulting Team</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">24/7 Priority Support and Services</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Corporate Strategy, Transformation</span>
+                  </li>
+                  <li class="pricing-tab-item__feature">
+                    <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                    <span class="pricing-tab-item__feature-label">Email Support &amp; Guidance</span>
+                  </li>
+                </ul>
+              </div>
+
+              <a href="#" class="button-elite button-elite--block pricing-tab-item__cta">
+                <span class="button-elite__label">Get Started With Plan</span>
+                <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="pricing-toggle-group"&gt;
+  &lt;div class="pricing-toggle"&gt;
+    &lt;span class="pricing-toggle__label is-active" data-period="monthly"&gt;Monthly&lt;/span&gt;
+    &lt;button class="pricing-toggle__switch" type="button" role="switch"
+            aria-checked="false" aria-label="Cambiar a facturación anual"&gt;
+      &lt;span class="pricing-toggle__switch-thumb"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;span class="pricing-toggle__label" data-period="yearly"&gt;Yearly&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="pricing-tab-item"&gt;
+    &lt;span class="pricing-tab-item__icon"&gt;&lt;i data-lucide="database"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;h4 class="pricing-tab-item__title"&gt;Basic Plan&lt;/h4&gt;
+    &lt;p class="pricing-tab-item__desc"&gt;Ideal for small business &amp;amp; individuals&lt;/p&gt;
+
+    &lt;div class="pricing-tab-item__panel"&gt;
+      &lt;div class="pricing-tab-item__price"&gt;
+        &lt;span class="pricing-tab-item__price-view is-active" data-period="monthly"&gt;
+          &lt;span class="pricing-tab-item__price-amount"&gt;$49.00&lt;/span&gt;
+          &lt;span class="pricing-tab-item__price-period"&gt;/Monthly&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="pricing-tab-item__price-view" data-period="yearly"&gt;
+          &lt;span class="pricing-tab-item__price-amount"&gt;$490.00&lt;/span&gt;
+          &lt;span class="pricing-tab-item__price-period"&gt;/Yearly&lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;hr class="pricing-tab-item__divider"&gt;
+      &lt;p class="pricing-tab-item__included"&gt;What's Included:&lt;/p&gt;
+      &lt;ul class="pricing-tab-item__features"&gt;
+        &lt;li class="pricing-tab-item__feature"&gt;
+          &lt;span class="pricing-tab-item__feature-icon"&gt;&lt;i data-lucide="check"&gt;&lt;/i&gt;&lt;/span&gt;
+          &lt;span class="pricing-tab-item__feature-label"&gt;Multi Expert Consulting Team&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;!-- … resto de features --&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;a href="#" class="button-elite button-elite--block pricing-tab-item__cta"&gt;
+      &lt;span class="button-elite__label"&gt;Get Started With Plan&lt;/span&gt;
+      &lt;span class="button-elite__icon"&gt;&lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El switch alterna .is-active entre los dos .pricing-tab-item__price-view
+     de cada card del mismo .pricing-toggle-group (ver initPricingToggle en main.js). --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Service Elite -->
+    <section class="kit-section" id="card-service-elite">
+      <h2 class="kit-section__title">Card Service Elite</h2>
+      <p class="kit-section__desc">
+        Card de servicio con imagen, superficie <code>--color-surface-glass</code> (fondo oscuro
+        semitransparente, para ir sobre secciones oscuras). Al hover, la imagen escala levemente y
+        una cortina azul translúcida sube desde abajo sobre la foto.
+      </p>
+
+      <div class="kit-demo-dark-panel">
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4">
+            <span class="kit-demo-label" style="color: var(--color-text-inverse-muted);">Default</span>
+            <a href="#" class="card-service-elite">
+              <div class="card-service-elite__media">
+                <img class="card-service-elite__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo revisando una estrategia financiera" loading="lazy">
+                <span class="card-service-elite__curtain"></span>
+                <span class="card-service-elite__icon"><i data-lucide="chart-column"></i></span>
+              </div>
+              <div class="card-service-elite__body">
+                <h3 class="card-service-elite__title">Financial strategy &amp; advisory</h3>
+                <p class="card-service-elite__desc">Expert financial planning and insights drive long-term growth stability.</p>
+                <hr class="card-service-elite__divider">
+                <span class="card-service-elite__link">Read More <i data-lucide="arrow-right"></i></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <span class="kit-demo-label" style="color: var(--color-text-inverse-muted);">Hover</span>
+            <a href="#" class="card-service-elite is-hover">
+              <div class="card-service-elite__media">
+                <img class="card-service-elite__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo revisando una estrategia financiera" loading="lazy">
+                <span class="card-service-elite__curtain"></span>
+                <span class="card-service-elite__icon"><i data-lucide="chart-column"></i></span>
+              </div>
+              <div class="card-service-elite__body">
+                <h3 class="card-service-elite__title">Financial strategy &amp; advisory</h3>
+                <p class="card-service-elite__desc">Expert financial planning and insights drive long-term growth stability.</p>
+                <hr class="card-service-elite__divider">
+                <span class="card-service-elite__link">Read More <i data-lucide="arrow-right"></i></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="card-service-elite"&gt;
+  &lt;div class="card-service-elite__media"&gt;
+    &lt;img class="card-service-elite__img" src="assets/img/portfolio/servicio-1.jpg"
+         alt="…" loading="lazy"&gt;
+    &lt;span class="card-service-elite__curtain"&gt;&lt;/span&gt;
+    &lt;span class="card-service-elite__icon"&gt;&lt;i data-lucide="chart-column"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="card-service-elite__body"&gt;
+    &lt;h3 class="card-service-elite__title"&gt;Financial strategy &amp;amp; advisory&lt;/h3&gt;
+    &lt;p class="card-service-elite__desc"&gt;Expert financial planning and insights drive long-term growth stability.&lt;/p&gt;
+    &lt;hr class="card-service-elite__divider"&gt;
+    &lt;span class="card-service-elite__link"&gt;Read More &lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-visible).
+     .is-hover solo existe para documentarlo aquí de forma estática.
+     El fondo oscuro del demo es solo del UI Kit: el card en sí ya trae
+     su propia superficie translúcida (--color-surface-glass). --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Service Item -->
+    <section class="kit-section" id="card-service-item">
+      <h2 class="kit-section__title">Card Service Item</h2>
+      <p class="kit-section__desc">
+        Card de servicio (ícono + título + texto + imagen), superficie <code>--color-surface-glass</code>.
+        Al hover: el ícono invierte de color, la imagen escala levemente y aparece el ícono de flecha
+        sobre una cortina azul translúcida que sube desde abajo de la foto.
+      </p>
+
+      <div class="kit-demo-dark-panel">
+        <div class="row g-4">
+          <div class="col-12 col-sm-6 col-lg-4">
+            <span class="kit-demo-label" style="color: var(--color-text-inverse-muted);">Default</span>
+            <div class="card-service-item">
+              <div class="card-service-item__header">
+                <span class="card-service-item__icon"><i data-lucide="monitor"></i></span>
+                <h3 class="card-service-item__title">Wealth Management</h3>
+              </div>
+              <hr class="card-service-item__divider">
+              <p class="card-service-item__desc">We provide expert investment advice and portfolio management solutions designed to maximize returns and minimize risks.</p>
+              <div class="card-service-item__media">
+                <img class="card-service-item__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo revisando un portafolio de inversión" loading="lazy">
+                <span class="card-service-item__curtain"></span>
+                <span class="card-service-item__arrow"><i data-lucide="arrow-up-right"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4">
+            <span class="kit-demo-label" style="color: var(--color-text-inverse-muted);">Hover</span>
+            <div class="card-service-item is-hover">
+              <div class="card-service-item__header">
+                <span class="card-service-item__icon"><i data-lucide="monitor"></i></span>
+                <h3 class="card-service-item__title">Wealth Management</h3>
+              </div>
+              <hr class="card-service-item__divider">
+              <p class="card-service-item__desc">We provide expert investment advice and portfolio management solutions designed to maximize returns and minimize risks.</p>
+              <div class="card-service-item__media">
+                <img class="card-service-item__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Equipo revisando un portafolio de inversión" loading="lazy">
+                <span class="card-service-item__curtain"></span>
+                <span class="card-service-item__arrow"><i data-lucide="arrow-up-right"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="card-service-item"&gt;
+  &lt;div class="card-service-item__header"&gt;
+    &lt;span class="card-service-item__icon"&gt;&lt;i data-lucide="monitor"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;h3 class="card-service-item__title"&gt;Wealth Management&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;hr class="card-service-item__divider"&gt;
+  &lt;p class="card-service-item__desc"&gt;We provide expert investment advice and portfolio management solutions designed to maximize returns and minimize risks.&lt;/p&gt;
+  &lt;div class="card-service-item__media"&gt;
+    &lt;img class="card-service-item__img" src="assets/img/portfolio/servicio-1.jpg" alt="…" loading="lazy"&gt;
+    &lt;span class="card-service-item__curtain"&gt;&lt;/span&gt;
+    &lt;span class="card-service-item__arrow"&gt;&lt;i data-lucide="arrow-up-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Ghost Item -->
+    <section class="kit-section" id="card-ghost-item">
+      <h2 class="kit-section__title">Card Ghost Item</h2>
+      <p class="kit-section__desc">
+        Ícono + título + descripción, sin superficie propia de card (se apoya directo en el fondo
+        de la sección). Al hover, el fondo del ícono invierte de azul a oscuro. Variante
+        <code>--row</code>: ícono a la izquierda, título y descripción a la derecha.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <div class="card-ghost-item">
+            <span class="card-ghost-item__icon"><i data-lucide="binoculars"></i></span>
+            <h4 class="card-ghost-item__title">Data Driven Strategies</h4>
+            <p class="card-ghost-item__desc">We use market insight &amp; analytics to create smart strategy.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <div class="card-ghost-item is-hover">
+            <span class="card-ghost-item__icon"><i data-lucide="binoculars"></i></span>
+            <h4 class="card-ghost-item__title">Data Driven Strategies</h4>
+            <p class="card-ghost-item__desc">We use market insight &amp; analytics to create smart strategy.</p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <span class="kit-demo-label">Variante --row</span>
+          <div class="card-ghost-item card-ghost-item--row">
+            <span class="card-ghost-item__icon"><i data-lucide="lightbulb"></i></span>
+            <div class="card-ghost-item__content">
+              <h4 class="card-ghost-item__title">Expert Financial Planning</h4>
+              <p class="card-ghost-item__desc">To simplify complex financial decisions and provide reliable guidance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="card-ghost-item"&gt;
+  &lt;span class="card-ghost-item__icon"&gt;&lt;i data-lucide="binoculars"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;h4 class="card-ghost-item__title"&gt;Data Driven Strategies&lt;/h4&gt;
+  &lt;p class="card-ghost-item__desc"&gt;We use market insight &amp;amp; analytics to create smart strategy.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Variante --row: ícono a la izquierda, título+descripción a la derecha --&gt;
+&lt;div class="card-ghost-item card-ghost-item--row"&gt;
+  &lt;span class="card-ghost-item__icon"&gt;&lt;i data-lucide="lightbulb"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;div class="card-ghost-item__content"&gt;
+    &lt;h4 class="card-ghost-item__title"&gt;Expert Financial Planning&lt;/h4&gt;
+    &lt;p class="card-ghost-item__desc"&gt;To simplify complex financial decisions and provide reliable guidance.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Metric Item -->
+    <section class="kit-section" id="card-metric-item">
+      <h2 class="kit-section__title">Card Metric Item</h2>
+      <p class="kit-section__desc">
+        Card de métrica/logro (ícono + título + divisor + cifra + descripción). Al hover, el ícono
+        invierte a oscuro y el card se desplaza levemente hacia arriba con una sombra suave.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <div class="card-metric-item">
+            <span class="card-metric-item__icon"><i data-lucide="handshake"></i></span>
+            <h4 class="card-metric-item__title">Transactions Advised</h4>
+            <hr class="card-metric-item__divider">
+            <div class="card-metric-item__stat">
+              <span class="card-metric-item__value">$1B<span class="card-metric-item__value-plus">+</span></span>
+              <p class="card-metric-item__desc">Major financial decisions with strategic insights</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <div class="card-metric-item is-hover">
+            <span class="card-metric-item__icon"><i data-lucide="handshake"></i></span>
+            <h4 class="card-metric-item__title">Transactions Advised</h4>
+            <hr class="card-metric-item__divider">
+            <div class="card-metric-item__stat">
+              <span class="card-metric-item__value">$1B<span class="card-metric-item__value-plus">+</span></span>
+              <p class="card-metric-item__desc">Major financial decisions with strategic insights</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="card-metric-item"&gt;
+  &lt;span class="card-metric-item__icon"&gt;&lt;i data-lucide="handshake"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;h4 class="card-metric-item__title"&gt;Transactions Advised&lt;/h4&gt;
+  &lt;hr class="card-metric-item__divider"&gt;
+  &lt;div class="card-metric-item__stat"&gt;
+    &lt;span class="card-metric-item__value"&gt;$1B&lt;span class="card-metric-item__value-plus"&gt;+&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="card-metric-item__desc"&gt;Major financial decisions with strategic insights&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Card Context Elite -->
+    <section class="kit-section" id="card-context-elite">
+      <h2 class="kit-section__title">Card Context Elite</h2>
+      <p class="kit-section__desc">
+        Card grande de contenido: imagen a sangre a la izquierda + título, descripción y checklist
+        a la derecha. Al hover, la imagen escala y una luz diagonal se expande/dispersa sobre ella.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <span class="kit-demo-label">Default</span>
+          <div class="card-context-elite">
+            <div class="card-context-elite__media">
+              <img class="card-context-elite__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Equipo revisando documentos financieros" loading="lazy">
+              <span class="card-context-elite__curtain"></span>
+            </div>
+            <div class="card-context-elite__body">
+              <h3 class="card-context-elite__title">Financial Solutions for Healthcare and Wellness Excellence</h3>
+              <p class="card-context-elite__desc">We provide expert financial guidance and tailored consulting solutions for healthcare providers and wellness businesses, helping them optimize operations, manage costs, ensure compliance, and achieve sustainable growth.</p>
+              <hr class="card-context-elite__divider">
+              <ul class="card-context-elite__list">
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Ensure adherence to healthcare regulations while minimizing financial risks.
+                </li>
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Implement long-term financial planning &amp; investment strategies to support.
+                </li>
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Streamline budgeting, cost control and resource allocation for better efficiency.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <span class="kit-demo-label">Hover</span>
+          <div class="card-context-elite is-hover">
+            <div class="card-context-elite__media">
+              <img class="card-context-elite__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" alt="Equipo revisando documentos financieros" loading="lazy">
+              <span class="card-context-elite__curtain"></span>
+            </div>
+            <div class="card-context-elite__body">
+              <h3 class="card-context-elite__title">Financial Solutions for Healthcare and Wellness Excellence</h3>
+              <p class="card-context-elite__desc">We provide expert financial guidance and tailored consulting solutions for healthcare providers and wellness businesses, helping them optimize operations, manage costs, ensure compliance, and achieve sustainable growth.</p>
+              <hr class="card-context-elite__divider">
+              <ul class="card-context-elite__list">
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Ensure adherence to healthcare regulations while minimizing financial risks.
+                </li>
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Implement long-term financial planning &amp; investment strategies to support.
+                </li>
+                <li class="card-context-elite__item">
+                  <span class="card-context-elite__item-icon"><i data-lucide="check"></i></span>
+                  Streamline budgeting, cost control and resource allocation for better efficiency.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="card-context-elite"&gt;
+  &lt;div class="card-context-elite__media"&gt;
+    &lt;img class="card-context-elite__img" src="assets/img/portfolio/contexto-1.jpg" alt="…" loading="lazy"&gt;
+    &lt;span class="card-context-elite__curtain"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="card-context-elite__body"&gt;
+    &lt;h3 class="card-context-elite__title"&gt;Financial Solutions for Healthcare and Wellness Excellence&lt;/h3&gt;
+    &lt;p class="card-context-elite__desc"&gt;We provide expert financial guidance…&lt;/p&gt;
+    &lt;hr class="card-context-elite__divider"&gt;
+    &lt;ul class="card-context-elite__list"&gt;
+      &lt;li class="card-context-elite__item"&gt;
+        &lt;span class="card-context-elite__item-icon"&gt;&lt;i data-lucide="check"&gt;&lt;/i&gt;&lt;/span&gt;
+        Ensure adherence to healthcare regulations while minimizing financial risks.
+      &lt;/li&gt;
+      &lt;!-- … resto de items --&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Forms -->
+    <section class="kit-section" id="forms">
+      <h2 class="kit-section__title">Forms</h2>
+      <p class="kit-section__desc">
+        Input y textarea con dos variantes de color: <code>--light</code> (fondo claro) y
+        <code>--dark</code> (fondo oscuro, fill translúcido). El botón de envío reutiliza
+        <code>button-elite</code>.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-6">
+          <span class="kit-demo-label">Light</span>
+          <div class="form-panel form-panel--light">
+            <h3 class="form-panel__title">Get In Touch</h3>
+            <hr class="form-panel__divider">
+            <form class="form-panel__form">
+              <div class="row g-4">
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="first-name-light">Nombre</label>
+                  <input class="form-field form-field--light" type="text" id="first-name-light" placeholder="First Name">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="last-name-light">Apellido</label>
+                  <input class="form-field form-field--light" type="text" id="last-name-light" placeholder="Last Name">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="phone-light">Teléfono</label>
+                  <input class="form-field form-field--light" type="tel" id="phone-light" placeholder="Phone No.">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="email-light">Correo</label>
+                  <input class="form-field form-field--light" type="email" id="email-light" placeholder="E-mail Address">
+                </div>
+                <div class="col-12">
+                  <label class="sr-only" for="message-light">Mensaje</label>
+                  <textarea class="form-field form-field--light" id="message-light" placeholder="Write Message..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="button-elite">
+                    <span class="button-elite__label">Send Message</span>
+                    <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <span class="kit-demo-label">Dark</span>
+          <div class="form-panel form-panel--dark">
+            <h3 class="form-panel__title">Get In Touch</h3>
+            <hr class="form-panel__divider">
+            <form class="form-panel__form">
+              <div class="row g-4">
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="first-name-dark">Nombre</label>
+                  <input class="form-field form-field--dark" type="text" id="first-name-dark" placeholder="First Name">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="last-name-dark">Apellido</label>
+                  <input class="form-field form-field--dark" type="text" id="last-name-dark" placeholder="Last Name">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="phone-dark">Teléfono</label>
+                  <input class="form-field form-field--dark" type="tel" id="phone-dark" placeholder="Phone No.">
+                </div>
+                <div class="col-12 col-sm-6">
+                  <label class="sr-only" for="email-dark">Correo</label>
+                  <input class="form-field form-field--dark" type="email" id="email-dark" placeholder="E-mail Address">
+                </div>
+                <div class="col-12">
+                  <label class="sr-only" for="message-dark">Mensaje</label>
+                  <textarea class="form-field form-field--dark" id="message-dark" placeholder="Write Message..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="button-elite">
+                    <span class="button-elite__label">Send Message</span>
+                    <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;label class="sr-only" for="first-name"&gt;Nombre&lt;/label&gt;
+&lt;input class="form-field form-field--dark" type="text" id="first-name" placeholder="First Name"&gt;
+
+&lt;label class="sr-only" for="message"&gt;Mensaje&lt;/label&gt;
+&lt;textarea class="form-field form-field--dark" id="message" placeholder="Write Message..."&gt;&lt;/textarea&gt;
+
+&lt;!-- Cambiar --dark por --light según el fondo de la sección. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Special Quote -->
+    <section class="kit-section" id="special-quote">
+      <h2 class="kit-section__title">Special Quote</h2>
+      <p class="kit-section__desc">
+        Cita destacada con acento vertical (<code>--color-bg-surface</code>) y footer de
+        credibilidad (ícono + caption). Sin estados de interacción.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <blockquote class="special-quote">
+            <p class="special-quote__text">“ Smart financial decision today create the foundation for sustainable growth. ”</p>
+            <hr class="special-quote__divider">
+            <div class="special-quote__footer">
+              <span class="special-quote__icon"><i data-lucide="check"></i></span>
+              <span class="special-quote__caption">Expert backed information that helps you understand.</span>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;blockquote class="special-quote"&gt;
+  &lt;p class="special-quote__text"&gt;“ Smart financial decision today create the foundation for sustainable growth. ”&lt;/p&gt;
+  &lt;hr class="special-quote__divider"&gt;
+  &lt;div class="special-quote__footer"&gt;
+    &lt;span class="special-quote__icon"&gt;&lt;i data-lucide="check"&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;span class="special-quote__caption"&gt;Expert backed information that helps you understand.&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/blockquote&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Testimonial Item -->
+    <section class="kit-section" id="testimonial-item">
+      <h2 class="kit-section__title">Testimonial Item</h2>
+      <p class="kit-section__desc">
+        Reseña de cliente: avatar + nombre/rol, estrellas, cita, divisor y una métrica de respaldo
+        (mismo patrón de cifra + caption que <code>card-metric-item</code>). Variantes
+        <code>--light</code> (gris claro) y <code>--dark</code> (fondo oscuro translúcido,
+        <code>--color-surface-glass</code>). Sin estados de interacción.
+        Además, <code>--glass-dark</code>/<code>--glass-light</code>: vidrio esmerilado real
+        (<code>backdrop-filter: blur(30px)</code>) para colocar sobre imágenes o fondos con textura;
+        esta composición no lleva avatar/métrica, usa estrellas + cita + divisor + nombre/rol +
+        marca de cita decorativa.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Light</span>
+          <div class="testimonial-item testimonial-item--light">
+            <div class="testimonial-item__header">
+              <img class="testimonial-item__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Michael Brown" loading="lazy">
+              <div class="testimonial-item__person">
+                <span class="testimonial-item__name">Michael Brown</span>
+                <span class="testimonial-item__role">CFO, Global Ventures</span>
+              </div>
+            </div>
+            <div class="testimonial-item__stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </div>
+            <p class="testimonial-item__quote">“Their insights into investment strategies helped me grow my assets and plan for long-term financial stability.”</p>
+            <hr class="testimonial-item__divider">
+            <div class="testimonial-item__stat">
+              <span class="testimonial-item__stat-value">65<span class="testimonial-item__stat-percent">%</span></span>
+              <p class="testimonial-item__stat-caption">Strategic Partnerships Built to Enhance Growth</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Dark</span>
+          <div class="kit-demo-dark-panel">
+            <div class="testimonial-item testimonial-item--dark">
+              <div class="testimonial-item__header">
+                <img class="testimonial-item__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=200&amp;auto=format&amp;fit=crop" alt="Michael Brown" loading="lazy">
+                <div class="testimonial-item__person">
+                  <span class="testimonial-item__name">Michael Brown</span>
+                  <span class="testimonial-item__role">CFO, Global Ventures</span>
+                </div>
+              </div>
+              <div class="testimonial-item__stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="testimonial-item__quote">“Their insights into investment strategies helped me grow my assets and plan for long-term financial stability.”</p>
+              <hr class="testimonial-item__divider">
+              <div class="testimonial-item__stat">
+                <span class="testimonial-item__stat-value">65<span class="testimonial-item__stat-percent">%</span></span>
+                <p class="testimonial-item__stat-caption">Strategic Partnerships Built to Enhance Growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Glass Dark (backdrop-filter)</span>
+          <div class="kit-demo-media-panel" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop');">
+            <div class="testimonial-item testimonial-item--glass-dark">
+              <div class="testimonial-item__stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="testimonial-item__quote">Their professionalism and deep financial knowledge are unmatched. We now have a clear investment plan and feel confident about our future.</p>
+              <hr class="testimonial-item__divider">
+              <div class="testimonial-item__footer">
+                <div class="testimonial-item__person">
+                  <span class="testimonial-item__name">Courtney Henry</span>
+                  <span class="testimonial-item__role">CEO, Tech Solutions Ltd.</span>
+                </div>
+                <span class="testimonial-item__quote-mark">”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Glass Light (backdrop-filter)</span>
+          <div class="kit-demo-media-panel" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop');">
+            <div class="testimonial-item testimonial-item--glass-light">
+              <div class="testimonial-item__stars">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+              </div>
+              <p class="testimonial-item__quote">Their professionalism and deep financial knowledge are unmatched. We now have a clear investment plan and feel confident about our future.</p>
+              <hr class="testimonial-item__divider">
+              <div class="testimonial-item__footer">
+                <div class="testimonial-item__person">
+                  <span class="testimonial-item__name">Courtney Henry</span>
+                  <span class="testimonial-item__role">CEO, Tech Solutions Ltd.</span>
+                </div>
+                <span class="testimonial-item__quote-mark">”</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="testimonial-item testimonial-item--light"&gt;
+  &lt;div class="testimonial-item__header"&gt;
+    &lt;img class="testimonial-item__avatar" src="assets/img/portfolio/avatar-1.jpg" alt="Michael Brown" loading="lazy"&gt;
+    &lt;div class="testimonial-item__person"&gt;
+      &lt;span class="testimonial-item__name"&gt;Michael Brown&lt;/span&gt;
+      &lt;span class="testimonial-item__role"&gt;CFO, Global Ventures&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="testimonial-item__stars"&gt;
+    &lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;p class="testimonial-item__quote"&gt;“Their insights into investment strategies helped me grow my assets and plan for long-term financial stability.”&lt;/p&gt;
+  &lt;hr class="testimonial-item__divider"&gt;
+  &lt;div class="testimonial-item__stat"&gt;
+    &lt;span class="testimonial-item__stat-value"&gt;65&lt;span class="testimonial-item__stat-percent"&gt;%&lt;/span&gt;&lt;/span&gt;
+    &lt;p class="testimonial-item__stat-caption"&gt;Strategic Partnerships Built to Enhance Growth&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Cambiar --light por --dark según el fondo de la sección. --&gt;</code></pre>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;!-- Variante vidrio esmerilado: sin avatar/métrica --&gt;
+&lt;div class="testimonial-item testimonial-item--glass-dark"&gt;
+  &lt;div class="testimonial-item__stars"&gt;
+    &lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;p class="testimonial-item__quote"&gt;Their professionalism and deep financial knowledge are unmatched…&lt;/p&gt;
+  &lt;hr class="testimonial-item__divider"&gt;
+  &lt;div class="testimonial-item__footer"&gt;
+    &lt;div class="testimonial-item__person"&gt;
+      &lt;span class="testimonial-item__name"&gt;Courtney Henry&lt;/span&gt;
+      &lt;span class="testimonial-item__role"&gt;CEO, Tech Solutions Ltd.&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="testimonial-item__quote-mark"&gt;”&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Cambiar --glass-dark por --glass-light según el fondo. Requiere que el
+     elemento tenga algo detrás para que el desenfoque sea visible (una
+     imagen, no un color plano). --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Google Rating Box -->
+    <section class="kit-section" id="google-rating-box">
+      <h2 class="kit-section__title">Google Rating Box</h2>
+      <p class="kit-section__desc">
+        Logo de Google + puntaje + estrellas + caption de reseñas. Sin superficie propia, se apoya
+        directo en el fondo de la sección. Sin estados de interacción.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="google-rating-box">
+            <span class="google-rating-box__logo">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+              </svg>
+            </span>
+            <div class="google-rating-box__content">
+              <div class="google-rating-box__row">
+                <span class="google-rating-box__score">4.9/5.0</span>
+                <span class="google-rating-box__stars">
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                  <i data-lucide="star"></i>
+                </span>
+              </div>
+              <p class="google-rating-box__caption">Based on 25K+ reviews</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="google-rating-box"&gt;
+  &lt;span class="google-rating-box__logo"&gt;
+    &lt;svg viewBox="0 0 48 48" aria-hidden="true"&gt;&lt;!-- G de Google, 4 colores --&gt;&lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;div class="google-rating-box__content"&gt;
+    &lt;div class="google-rating-box__row"&gt;
+      &lt;span class="google-rating-box__score"&gt;4.9/5.0&lt;/span&gt;
+      &lt;span class="google-rating-box__stars"&gt;
+        &lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class="google-rating-box__caption"&gt;Based on 25K+ reviews&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Post Card -->
+    <section class="kit-section" id="post-card">
+      <h2 class="kit-section__title">Post Card</h2>
+      <p class="kit-section__desc">
+        Card de artículo/blog (imagen + título + divisor + "Read More"). Efecto creativo: la imagen
+        arranca en blanco y negro y revela color + zoom sutil al hover.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <a href="#" class="post-card">
+            <div class="post-card__media">
+              <img class="post-card__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Estrategias de inversión a largo plazo" loading="lazy">
+            </div>
+            <div class="post-card__body">
+              <h3 class="post-card__title">Top Investment Strategies for Long Term Wealth</h3>
+              <hr class="post-card__divider">
+              <span class="post-card__link">Read More <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <a href="#" class="post-card is-hover">
+            <div class="post-card__media">
+              <img class="post-card__img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Estrategias de inversión a largo plazo" loading="lazy">
+            </div>
+            <div class="post-card__body">
+              <h3 class="post-card__title">Top Investment Strategies for Long Term Wealth</h3>
+              <hr class="post-card__divider">
+              <span class="post-card__link">Read More <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="post-card"&gt;
+  &lt;div class="post-card__media"&gt;
+    &lt;img class="post-card__img" src="assets/img/portfolio/post-1.jpg" alt="…" loading="lazy"&gt;
+  &lt;/div&gt;
+  &lt;div class="post-card__body"&gt;
+    &lt;h3 class="post-card__title"&gt;Top Investment Strategies for Long Term Wealth&lt;/h3&gt;
+    &lt;hr class="post-card__divider"&gt;
+    &lt;span class="post-card__link"&gt;Read More &lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-visible).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Service Item Image Metal -->
+    <section class="kit-section" id="service-item-image-metal">
+      <h2 class="kit-section__title">Service Item Image Metal</h2>
+      <p class="kit-section__desc">
+        Card de servicio a imagen completa, con scrim degradado para legibilidad. Al hover: el
+        ícono invierte de color (azul → blanco) y la imagen escala levemente.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <a href="#" class="service-item-image-metal">
+            <img class="service-item-image-metal__img" src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Asesoría de inversión" loading="lazy">
+            <span class="service-item-image-metal__scrim"></span>
+            <span class="service-item-image-metal__icon"><i data-lucide="sparkle"></i></span>
+            <div class="service-item-image-metal__body">
+              <h3 class="service-item-image-metal__title">Investment Advisory</h3>
+              <p class="service-item-image-metal__desc">We provide expert financial guidance to help you manage investments.</p>
+              <hr class="service-item-image-metal__divider">
+              <span class="service-item-image-metal__link">Read More <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <a href="#" class="service-item-image-metal is-hover">
+            <img class="service-item-image-metal__img" src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Asesoría de inversión" loading="lazy">
+            <span class="service-item-image-metal__scrim"></span>
+            <span class="service-item-image-metal__icon"><i data-lucide="sparkle"></i></span>
+            <div class="service-item-image-metal__body">
+              <h3 class="service-item-image-metal__title">Investment Advisory</h3>
+              <p class="service-item-image-metal__desc">We provide expert financial guidance to help you manage investments.</p>
+              <hr class="service-item-image-metal__divider">
+              <span class="service-item-image-metal__link">Read More <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="service-item-image-metal"&gt;
+  &lt;img class="service-item-image-metal__img" src="assets/img/portfolio/servicio-1.jpg" alt="…" loading="lazy"&gt;
+  &lt;span class="service-item-image-metal__scrim"&gt;&lt;/span&gt;
+  &lt;span class="service-item-image-metal__icon"&gt;&lt;i data-lucide="sparkle"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;div class="service-item-image-metal__body"&gt;
+    &lt;h3 class="service-item-image-metal__title"&gt;Investment Advisory&lt;/h3&gt;
+    &lt;p class="service-item-image-metal__desc"&gt;We provide expert financial guidance to help you manage investments.&lt;/p&gt;
+    &lt;hr class="service-item-image-metal__divider"&gt;
+    &lt;span class="service-item-image-metal__link"&gt;Read More &lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/a&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-visible).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Team Item Metal -->
+    <section class="kit-section" id="team-item-metal">
+      <h2 class="kit-section__title">Team Item Metal</h2>
+      <p class="kit-section__desc">
+        Card de equipo a imagen completa (foto + scrim + nombre/rol + botón compartir). Al hover:
+        el botón invierte de color y despliega en cascada un stack de redes sociales hacia arriba.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Default</span>
+          <div class="team-item-metal">
+            <img class="team-item-metal__img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Amit Patel" loading="lazy">
+            <span class="team-item-metal__scrim"></span>
+            <div class="team-item-metal__info">
+              <span class="team-item-metal__name">Amit Patel</span>
+              <span class="team-item-metal__role">Business Consultant</span>
+            </div>
+            <div class="team-item-metal__social">
+              <button type="button" class="team-item-metal__share" aria-label="Compartir perfil"><i data-lucide="share-2"></i></button>
+              <a href="#" class="team-item-metal__social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="Pinterest">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 20c1-3 2-9 2-9"/><path d="M9.5 12a3 3 0 1 1 4 2.8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <span class="kit-demo-label">Hover</span>
+          <div class="team-item-metal is-hover">
+            <img class="team-item-metal__img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Amit Patel" loading="lazy">
+            <span class="team-item-metal__scrim"></span>
+            <div class="team-item-metal__info">
+              <span class="team-item-metal__name">Amit Patel</span>
+              <span class="team-item-metal__role">Business Consultant</span>
+            </div>
+            <div class="team-item-metal__social">
+              <button type="button" class="team-item-metal__share" aria-label="Compartir perfil"><i data-lucide="share-2"></i></button>
+              <a href="#" class="team-item-metal__social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" class="team-item-metal__social-link" aria-label="Pinterest">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 20c1-3 2-9 2-9"/><path d="M9.5 12a3 3 0 1 1 4 2.8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="team-item-metal"&gt;
+  &lt;img class="team-item-metal__img" src="assets/img/team/amit-patel.jpg" alt="Amit Patel" loading="lazy"&gt;
+  &lt;span class="team-item-metal__scrim"&gt;&lt;/span&gt;
+  &lt;div class="team-item-metal__info"&gt;
+    &lt;span class="team-item-metal__name"&gt;Amit Patel&lt;/span&gt;
+    &lt;span class="team-item-metal__role"&gt;Business Consultant&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="team-item-metal__social"&gt;
+    &lt;button type="button" class="team-item-metal__share" aria-label="Compartir perfil"&gt;&lt;i data-lucide="share-2"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;a href="#" class="team-item-metal__social-link" aria-label="Instagram"&gt;&lt;svg viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/a&gt;
+    &lt;a href="#" class="team-item-metal__social-link" aria-label="X (Twitter)"&gt;&lt;svg viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/a&gt;
+    &lt;a href="#" class="team-item-metal__social-link" aria-label="Facebook"&gt;&lt;svg viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/a&gt;
+    &lt;a href="#" class="team-item-metal__social-link" aria-label="Pinterest"&gt;&lt;svg viewBox="0 0 24 24"&gt;…&lt;/svg&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Lucide no incluye logos de marca (instagram/x/facebook/pinterest);
+     van como SVG inline propios, en el mismo estilo de línea que el resto.
+     El botón "compartir" siempre visible; el stack de redes está oculto
+     (opacity:0) hasta el :hover / :focus-within del card.
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Progress Bar Metal -->
+    <section class="kit-section" id="progress-bar-metal">
+      <h2 class="kit-section__title">Progress Bar Metal</h2>
+      <p class="kit-section__desc">
+        Label + porcentaje + barra de progreso. Variantes <code>--light</code> (fondo claro) y
+        <code>--dark</code> (fondo oscuro). El ancho del fill se define inline y anima por
+        transición si se actualiza dinámicamente (ej. al entrar en el viewport).
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-6">
+          <span class="kit-demo-label">Light</span>
+          <div class="progress-bar-metal progress-bar-metal--light">
+            <div class="progress-bar-metal__header">
+              <span class="progress-bar-metal__label">Client Satisfaction Rate</span>
+              <span class="progress-bar-metal__value">98%</span>
+            </div>
+            <div class="progress-bar-metal__track">
+              <div class="progress-bar-metal__fill" style="width: 98%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <span class="kit-demo-label">Dark</span>
+          <div class="kit-demo-dark-panel">
+            <div class="progress-bar-metal progress-bar-metal--dark">
+              <div class="progress-bar-metal__header">
+                <span class="progress-bar-metal__label">Client Satisfaction Rate</span>
+                <span class="progress-bar-metal__value">98%</span>
+              </div>
+              <div class="progress-bar-metal__track">
+                <div class="progress-bar-metal__fill" style="width: 98%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="progress-bar-metal progress-bar-metal--light"&gt;
+  &lt;div class="progress-bar-metal__header"&gt;
+    &lt;span class="progress-bar-metal__label"&gt;Client Satisfaction Rate&lt;/span&gt;
+    &lt;span class="progress-bar-metal__value"&gt;98%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="progress-bar-metal__track"&gt;
+    &lt;div class="progress-bar-metal__fill" style="width: 98%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Cambiar --light por --dark según el fondo. El % del label y el
+     width inline del fill deben coincidir. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · About Us Item Elite -->
+    <section class="kit-section" id="about-us-item-elite">
+      <h2 class="kit-section__title">About Us Item Elite</h2>
+      <p class="kit-section__desc">
+        Píldora ícono + label, para listas cortas de diferenciadores. Al hover, una cortina
+        horizontal entra desde la izquierda e invierte ícono y texto a blanco.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-auto">
+          <span class="kit-demo-label">Default</span>
+          <div class="about-us-item-elite">
+            <span class="about-us-item-elite__icon"><i data-lucide="activity"></i></span>
+            <span class="about-us-item-elite__label">Trusted and reliable partner</span>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <span class="kit-demo-label">Hover</span>
+          <div class="about-us-item-elite is-hover">
+            <span class="about-us-item-elite__icon"><i data-lucide="activity"></i></span>
+            <span class="about-us-item-elite__label">Trusted and reliable partner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="about-us-item-elite"&gt;
+  &lt;span class="about-us-item-elite__icon"&gt;&lt;i data-lucide="activity"&gt;&lt;/i&gt;&lt;/span&gt;
+  &lt;span class="about-us-item-elite__label"&gt;Trusted and reliable partner&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- El estado hover es automático (:hover / :focus-within).
+     .is-hover solo existe para documentarlo aquí de forma estática. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Preview Video -->
+    <section class="kit-section" id="preview-video">
+      <h2 class="kit-section__title">Preview Video</h2>
+      <p class="kit-section__desc">
+        Thumbnail con botón de play centrado. El anillo blanco pulsa hacia afuera en loop continuo
+        (tipo sonar), independiente de hover.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <a href="#" class="preview-video">
+            <img class="preview-video__img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Video de presentación del equipo" loading="lazy">
+            <span class="preview-video__play">
+              <span class="preview-video__sonar"></span>
+              <span class="preview-video__sonar preview-video__sonar--delay"></span>
+              <i data-lucide="play" class="preview-video__icon"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;a href="#" class="preview-video"&gt;
+  &lt;img class="preview-video__img" src="assets/img/portfolio/video-1.jpg" alt="…" loading="lazy"&gt;
+  &lt;span class="preview-video__play"&gt;
+    &lt;span class="preview-video__sonar"&gt;&lt;/span&gt;
+    &lt;span class="preview-video__sonar preview-video__sonar--delay"&gt;&lt;/span&gt;
+    &lt;i data-lucide="play" class="preview-video__icon"&gt;&lt;/i&gt;
+  &lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Los dos .preview-video__sonar están desfasados 1000ms para que
+     el pulso se vea continuo en vez de un solo anillo intermitente. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Expertise Item Elite -->
+    <section class="kit-section" id="expertise-item-elite">
+      <h2 class="kit-section__title">Expertise Item Elite</h2>
+      <p class="kit-section__desc">
+        Anillo de progreso (SVG, <code>stroke-dasharray</code>/<code>stroke-dashoffset</code>) + título
+        + descripción. Se agrupan en <code>.expertise-item-list-elite</code>, separados por un
+        divisor (el último item no lleva borde inferior). Sin estados de interacción.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-8">
+          <div class="expertise-item-list-elite">
+
+            <div class="expertise-item-elite">
+              <div class="expertise-item-elite__ring">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <g class="expertise-item-elite__ring-rotate">
+                    <circle class="expertise-item-elite__ring-track" cx="50" cy="50" r="42"></circle>
+                    <circle class="expertise-item-elite__ring-progress" cx="50" cy="50" r="42" style="stroke-dasharray: 263.9; stroke-dashoffset: 79.2;"></circle>
+                  </g>
+                  <circle class="expertise-item-elite__ring-dot" cx="50" cy="8" r="4"></circle>
+                </svg>
+                <span class="expertise-item-elite__percent">70%</span>
+              </div>
+              <div class="expertise-item-elite__content">
+                <h3 class="expertise-item-elite__title">Financial strategy</h3>
+                <p class="expertise-item-elite__desc">We design data-driven financial strategies that help performance, manage risks, &amp; achieve long-term stability.</p>
+              </div>
+            </div>
+
+            <div class="expertise-item-elite">
+              <div class="expertise-item-elite__ring">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <g class="expertise-item-elite__ring-rotate">
+                    <circle class="expertise-item-elite__ring-track" cx="50" cy="50" r="42"></circle>
+                    <circle class="expertise-item-elite__ring-progress" cx="50" cy="50" r="42" style="stroke-dasharray: 263.9; stroke-dashoffset: 26.4;"></circle>
+                  </g>
+                  <circle class="expertise-item-elite__ring-dot" cx="50" cy="8" r="4"></circle>
+                </svg>
+                <span class="expertise-item-elite__percent">90%</span>
+              </div>
+              <div class="expertise-item-elite__content">
+                <h3 class="expertise-item-elite__title">Advisory services</h3>
+                <p class="expertise-item-elite__desc">We design data-driven financial strategies that help performance, manage risks, &amp; achieve long-term stability.</p>
+              </div>
+            </div>
+
+            <div class="expertise-item-elite">
+              <div class="expertise-item-elite__ring">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <g class="expertise-item-elite__ring-rotate">
+                    <circle class="expertise-item-elite__ring-track" cx="50" cy="50" r="42"></circle>
+                    <circle class="expertise-item-elite__ring-progress" cx="50" cy="50" r="42" style="stroke-dasharray: 263.9; stroke-dashoffset: 52.8;"></circle>
+                  </g>
+                  <circle class="expertise-item-elite__ring-dot" cx="50" cy="8" r="4"></circle>
+                </svg>
+                <span class="expertise-item-elite__percent">80%</span>
+              </div>
+              <div class="expertise-item-elite__content">
+                <h3 class="expertise-item-elite__title">Business excellence</h3>
+                <p class="expertise-item-elite__desc">We design data-driven financial strategies that help performance, manage risks, &amp; achieve long-term stability.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="expertise-item-list-elite"&gt;
+  &lt;div class="expertise-item-elite"&gt;
+    &lt;div class="expertise-item-elite__ring"&gt;
+      &lt;svg viewBox="0 0 100 100" aria-hidden="true"&gt;
+        &lt;g class="expertise-item-elite__ring-rotate"&gt;
+          &lt;circle class="expertise-item-elite__ring-track" cx="50" cy="50" r="42"&gt;&lt;/circle&gt;
+          &lt;circle class="expertise-item-elite__ring-progress" cx="50" cy="50" r="42"
+                  style="stroke-dasharray: 263.9; stroke-dashoffset: 79.2;"&gt;&lt;/circle&gt;
+        &lt;/g&gt;
+        &lt;circle class="expertise-item-elite__ring-dot" cx="50" cy="8" r="4"&gt;&lt;/circle&gt;
+      &lt;/svg&gt;
+      &lt;span class="expertise-item-elite__percent"&gt;70%&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="expertise-item-elite__content"&gt;
+      &lt;h3 class="expertise-item-elite__title"&gt;Financial strategy&lt;/h3&gt;
+      &lt;p class="expertise-item-elite__desc"&gt;We design data-driven financial strategies…&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- … resto de items --&gt;
+&lt;/div&gt;
+
+&lt;!-- dashoffset = circunferencia * (1 - porcentaje/100). Con r=42,
+     circunferencia ≈ 263.9. El &lt;g&gt; rota -90° para que el arco
+     empiece arriba (12 en punto); el punto (__ring-dot) va fuera
+     de ese grupo para quedar fijo arriba sin rotar con el arco. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- COMPONENTES · Hero Elite v1 -->
+    <section class="kit-section" id="hero-elite-v1">
+      <h2 class="kit-section__title">Hero Elite v1</h2>
+      <p class="kit-section__desc">
+        Hero a imagen completa. Reutiliza <code>badge--transparent</code> y <code>button-elite</code>
+        tal cual. Responsive por CSS (un solo markup, cambia <code>aspect-ratio</code> en mobile).
+        El titular tiene una animación de entrada tipo cortina: cada línea la tapa una barra azul
+        que se desliza para revelarla, en cascada.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <span class="kit-demo-label">Desktop / Mobile (responsive, redimensiona la ventana)</span>
+          <section class="hero-elite-v1">
+            <img class="hero-elite-v1__img" src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&amp;w=1600&amp;auto=format&amp;fit=crop" alt="Consultoras revisando una estrategia financiera" loading="eager">
+            <span class="hero-elite-v1__scrim"></span>
+            <div class="hero-elite-v1__content">
+              <span class="badge badge--transparent">
+                <i data-lucide="asterisk" class="badge__icon"></i>
+                <span class="badge__label">Finance &amp; Consulting Experts</span>
+              </span>
+              <h1 class="hero-elite-v1__title">
+                <span class="hero-elite-v1__title-mask"><span class="hero-elite-v1__title-line">Driving growth through</span></span>
+                <span class="hero-elite-v1__title-mask"><span class="hero-elite-v1__title-line">financial strategy</span></span>
+              </h1>
+              <p class="hero-elite-v1__desc">We help businesses and individuals navigate complex financial landscapes confidence through strategic planning.</p>
+              <hr class="hero-elite-v1__divider">
+              <div class="hero-elite-v1__footer">
+                <a href="#" class="button-elite">
+                  <span class="button-elite__label">Get Started</span>
+                  <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+                </a>
+                <div class="hero-elite-v1__social">
+                  <div class="hero-elite-v1__social-row">
+                    <div class="hero-elite-v1__avatars">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                    </div>
+                    <span class="hero-elite-v1__stars">
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                    </span>
+                    <span class="hero-elite-v1__rating-value">4.6</span>
+                  </div>
+                  <span class="hero-elite-v1__rating-caption">Our 100+ Happy Customers</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;section class="hero-elite-v1"&gt;
+  &lt;img class="hero-elite-v1__img" src="assets/img/hero-bg.jpg" alt="…" loading="eager"&gt;
+  &lt;span class="hero-elite-v1__scrim"&gt;&lt;/span&gt;
+  &lt;div class="hero-elite-v1__content"&gt;
+    &lt;span class="badge badge--transparent"&gt;
+      &lt;i data-lucide="asterisk" class="badge__icon"&gt;&lt;/i&gt;
+      &lt;span class="badge__label"&gt;Finance &amp;amp; Consulting Experts&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;h1 class="hero-elite-v1__title"&gt;
+      &lt;span class="hero-elite-v1__title-mask"&gt;&lt;span class="hero-elite-v1__title-line"&gt;Driving growth through&lt;/span&gt;&lt;/span&gt;
+      &lt;span class="hero-elite-v1__title-mask"&gt;&lt;span class="hero-elite-v1__title-line"&gt;financial strategy&lt;/span&gt;&lt;/span&gt;
+    &lt;/h1&gt;
+    &lt;p class="hero-elite-v1__desc"&gt;We help businesses and individuals navigate complex financial landscapes confidence through strategic planning.&lt;/p&gt;
+    &lt;hr class="hero-elite-v1__divider"&gt;
+    &lt;div class="hero-elite-v1__footer"&gt;
+      &lt;a href="#" class="button-elite"&gt;
+        &lt;span class="button-elite__label"&gt;Get Started&lt;/span&gt;
+        &lt;span class="button-elite__icon"&gt;&lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;div class="hero-elite-v1__social"&gt;
+        &lt;div class="hero-elite-v1__social-row"&gt;
+          &lt;div class="hero-elite-v1__avatars"&gt;
+            &lt;img class="hero-elite-v1__avatar" src="assets/img/avatars/1.jpg" alt="" loading="lazy"&gt;
+            &lt;!-- … 2 avatares más --&gt;
+          &lt;/div&gt;
+          &lt;span class="hero-elite-v1__stars"&gt;&lt;i data-lucide="star"&gt;&lt;/i&gt;&lt;!-- x4 --&gt;&lt;/span&gt;
+          &lt;span class="hero-elite-v1__rating-value"&gt;4.6&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span class="hero-elite-v1__rating-caption"&gt;Our 100+ Happy Customers&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- La animación de las líneas del titular corre automáticamente al
+     cargar la página (no depende de scroll ni de JS). --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- COMPONENTES · Hero Elite Slider -->
+    <section class="kit-section" id="hero-elite-slider">
+      <h2 class="kit-section__title">Hero Elite Slider</h2>
+      <p class="kit-section__desc">
+        Variante de <code>hero-elite-v1</code> con Swiper: 3 slides, cada una con su propia imagen
+        y mensaje. El footer (divisor + CTA + social proof) es fijo, no cambia entre slides. La
+        cortina del titular se re-dispara automáticamente en cada slide activo.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <section class="hero-elite-slider">
+            <div class="swiper hero-elite-slider__swiper">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide hero-elite-slider__slide">
+                  <img class="hero-elite-slider__img" src="assets/img/lib/hero-bg-image-elite.jpg" alt="Consultoras revisando una estrategia financiera" loading="eager">
+                  <span class="hero-elite-slider__scrim"></span>
+                  <div class="hero-elite-slider__slide-content">
+                    <span class="badge badge--transparent">
+                      <i data-lucide="asterisk" class="badge__icon"></i>
+                      <span class="badge__label">Finance &amp; Consulting Experts</span>
+                    </span>
+                    <h1 class="hero-elite-slider__title">
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">Driving growth through</span></span>
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">financial strategy</span></span>
+                    </h1>
+                    <p class="hero-elite-slider__desc">We help businesses and individuals navigate complex financial landscapes confidence through strategic planning.</p>
+                  </div>
+                </div>
+
+                <div class="swiper-slide hero-elite-slider__slide">
+                  <img class="hero-elite-slider__img" src="assets/img/lib/service-image-3-elite.jpg" alt="Analistas revisando reportes financieros" loading="lazy">
+                  <span class="hero-elite-slider__scrim"></span>
+                  <div class="hero-elite-slider__slide-content">
+                    <span class="badge badge--transparent">
+                      <i data-lucide="asterisk" class="badge__icon"></i>
+                      <span class="badge__label">Data-Driven Advisory</span>
+                    </span>
+                    <h1 class="hero-elite-slider__title">
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">Strategic advisory for</span></span>
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">lasting success</span></span>
+                    </h1>
+                    <p class="hero-elite-slider__desc">Our experts craft tailored strategies that turn financial complexity into clear, confident decisions.</p>
+                  </div>
+                </div>
+
+                <div class="swiper-slide hero-elite-slider__slide">
+                  <img class="hero-elite-slider__img" src="assets/img/lib/service-image-4-elite.jpg" alt="Equipo de consultoría planificando en conjunto" loading="lazy">
+                  <span class="hero-elite-slider__scrim"></span>
+                  <div class="hero-elite-slider__slide-content">
+                    <span class="badge badge--transparent">
+                      <i data-lucide="asterisk" class="badge__icon"></i>
+                      <span class="badge__label">Trusted by Teams</span>
+                    </span>
+                    <h1 class="hero-elite-slider__title">
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">Building wealth with</span></span>
+                      <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">proven expertise</span></span>
+                    </h1>
+                    <p class="hero-elite-slider__desc">From planning to execution, we help you grow, protect, and manage your financial future.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="hero-elite-slider__footer">
+              <div class="hero-elite-slider__pagination swiper-pagination"></div>
+              <hr class="hero-elite-slider__divider">
+              <div class="hero-elite-slider__footer-row">
+                <a href="#" class="button-elite">
+                  <span class="button-elite__label">Get Started</span>
+                  <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+                </a>
+                <div class="hero-elite-v1__social">
+                  <div class="hero-elite-v1__social-row">
+                    <div class="hero-elite-v1__avatars">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                      <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=100&amp;auto=format&amp;fit=crop" alt="" loading="lazy">
+                    </div>
+                    <span class="hero-elite-v1__stars">
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                      <i data-lucide="star"></i>
+                    </span>
+                    <span class="hero-elite-v1__rating-value">4.6</span>
+                  </div>
+                  <span class="hero-elite-v1__rating-caption">Our 100+ Happy Customers</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;section class="hero-elite-slider"&gt;
+  &lt;div class="swiper hero-elite-slider__swiper"&gt;
+    &lt;div class="swiper-wrapper"&gt;
+      &lt;div class="swiper-slide hero-elite-slider__slide"&gt;
+        &lt;img class="hero-elite-slider__img" src="assets/img/lib/hero-bg-image-elite.jpg" alt="…" loading="eager"&gt;
+        &lt;span class="hero-elite-slider__scrim"&gt;&lt;/span&gt;
+        &lt;div class="hero-elite-slider__slide-content"&gt;
+          &lt;span class="badge badge--transparent"&gt;…&lt;/span&gt;
+          &lt;h1 class="hero-elite-slider__title"&gt;
+            &lt;span class="hero-elite-slider__title-mask"&gt;&lt;span class="hero-elite-slider__title-line"&gt;Driving growth through&lt;/span&gt;&lt;/span&gt;
+            &lt;span class="hero-elite-slider__title-mask"&gt;&lt;span class="hero-elite-slider__title-line"&gt;financial strategy&lt;/span&gt;&lt;/span&gt;
+          &lt;/h1&gt;
+          &lt;p class="hero-elite-slider__desc"&gt;…&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- … 2 slides más --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Footer fijo: NO está dentro del swiper, no cambia entre slides --&gt;
+  &lt;div class="hero-elite-slider__footer"&gt;
+    &lt;div class="hero-elite-slider__pagination swiper-pagination"&gt;&lt;/div&gt;
+    &lt;hr class="hero-elite-slider__divider"&gt;
+    &lt;div class="hero-elite-slider__footer-row"&gt;
+      &lt;a href="#" class="button-elite"&gt;…&lt;/a&gt;
+      &lt;div class="hero-elite-v1__social"&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- initHeroSlider() en main.js instancia el Swiper con effect:'fade',
+     autoplay y la paginación apuntando a .hero-elite-slider__pagination
+     (que vive fuera del swiper, en el footer fijo). La cortina del
+     titular se re-dispara sola vía el selector .swiper-slide-active,
+     sin necesidad de reiniciarla desde JS. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ELEMENTOS · Marquee -->
+    <section class="kit-section" id="marquee">
+      <h2 class="kit-section__title">Marquee</h2>
+      <p class="kit-section__desc">
+        Cinta de texto en scroll infinito, separada por ícono. Variantes <code>--light</code> y
+        <code>--dark</code>, ambas con vidrio esmerilado real (<code>backdrop-filter: blur(30px)</code>).
+        Responsive: tipografía y padding se reducen en mobile.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <span class="kit-demo-label">Dark (backdrop-filter)</span>
+          <div class="kit-demo-media-panel" style="background-image: url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&amp;w=1200&amp;auto=format&amp;fit=crop');">
+            <div class="marquee marquee--dark">
+              <div class="marquee__track">
+                <div class="marquee__group">
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Investment Advisory</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Financial Reporting and Analysis</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Regulatory Compliance Support</span>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Investment Advisory</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Financial Reporting and Analysis</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Regulatory Compliance Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <span class="kit-demo-label">Light (backdrop-filter)</span>
+          <div class="kit-demo-media-panel" style="background-image: url('https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&amp;w=1200&amp;auto=format&amp;fit=crop');">
+            <div class="marquee marquee--light">
+              <div class="marquee__track">
+                <div class="marquee__group">
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Investment Advisory</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Financial Reporting and Analysis</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Regulatory Compliance Support</span>
+                </div>
+                <div class="marquee__group" aria-hidden="true">
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Investment Advisory</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Financial Reporting and Analysis</span>
+                  <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>Regulatory Compliance Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;div class="marquee marquee--dark"&gt;
+  &lt;div class="marquee__track"&gt;
+    &lt;div class="marquee__group"&gt;
+      &lt;span class="marquee__item"&gt;&lt;i data-lucide="asterisk" class="marquee__icon"&gt;&lt;/i&gt;Investment Advisory&lt;/span&gt;
+      &lt;!-- … resto de items --&gt;
+    &lt;/div&gt;
+    &lt;div class="marquee__group" aria-hidden="true"&gt;
+      &lt;!-- copia idéntica del grupo anterior, oculta a lectores de pantalla --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- El track anima translateX(0 → -50%): como hay 2 grupos idénticos,
+     -50% equivale exactamente al ancho de un grupo → loop perfecto,
+     sin salto visible. Cambiar --dark por --light según el fondo. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- COMPONENTES · Navbar Elite -->
+    <section class="kit-section" id="navbar-elite">
+      <h2 class="kit-section__title">Navbar Elite</h2>
+      <p class="kit-section__desc">
+        Navegación principal con fondo transparente, pensada para ir sobre un hero oscuro. Dropdowns
+        de escritorio por click; en mobile, menú off-canvas con submenús tipo acordeón (redimensiona
+        la ventana para ver el toggle mobile por debajo de 992px).
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="kit-demo-media-panel" style="position: relative; min-height: 520px; align-items: flex-start; padding: 0; background-image: url('assets/img/lib/hero-bg-image-elite.jpg');">
+
+            <header class="navbar-elite">
+              <div class="container">
+                <div class="navbar-elite__row">
+                  <a href="index.html" class="navbar-elite__brand">
+                    <img class="navbar-elite__logo-img" src="assets/img/logos/logo.svg" alt="Finanze">
+                  </a>
+
+                  <nav class="navbar-elite__nav">
+                    <ul class="navbar-elite__menu">
+                      <li class="navbar-elite__item navbar-elite__item--dropdown">
+                        <button class="navbar-elite__link" type="button" aria-expanded="false">
+                          Home <i data-lucide="chevron-down" class="navbar-elite__chevron"></i>
+                        </button>
+                        <ul class="navbar-elite__dropdown">
+                          <li><a href="#" class="navbar-elite__dropdown-link">Home – Version 1</a></li>
+                          <li><a href="#" class="navbar-elite__dropdown-link">Home – Version 2</a></li>
+                          <li><a href="#" class="navbar-elite__dropdown-link">Home – Version 3</a></li>
+                        </ul>
+                      </li>
+                      <li class="navbar-elite__item"><a href="#" class="navbar-elite__link">About Us</a></li>
+                      <li class="navbar-elite__item"><a href="#" class="navbar-elite__link">Services</a></li>
+                      <li class="navbar-elite__item"><a href="#" class="navbar-elite__link">Blog</a></li>
+                      <li class="navbar-elite__item navbar-elite__item--dropdown">
+                        <button class="navbar-elite__link" type="button" aria-expanded="false">
+                          Pages <i data-lucide="chevron-down" class="navbar-elite__chevron"></i>
+                        </button>
+                        <ul class="navbar-elite__dropdown">
+                          <li><a href="#" class="navbar-elite__dropdown-link">Team</a></li>
+                          <li><a href="#" class="navbar-elite__dropdown-link">Pricing</a></li>
+                          <li><a href="#" class="navbar-elite__dropdown-link">FAQ</a></li>
+                          <li><a href="#" class="navbar-elite__dropdown-link">404 Page</a></li>
+                        </ul>
+                      </li>
+                      <li class="navbar-elite__item"><a href="#" class="navbar-elite__link">Contact Us</a></li>
+                    </ul>
+                  </nav>
+
+                  <a href="#" class="button-elite navbar-elite__cta">
+                    <span class="button-elite__label">Contact Us</span>
+                    <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+                  </a>
+
+                  <button class="navbar-elite__toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
+                    <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--open"><i data-lucide="menu"></i></span>
+                    <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--close"><i data-lucide="x"></i></span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="navbar-elite__mobile">
+                <ul class="navbar-elite__mobile-menu">
+                  <li class="navbar-elite__mobile-item">
+                    <button class="navbar-elite__mobile-link" type="button">
+                      Home <i data-lucide="chevron-down" class="navbar-elite__mobile-chevron"></i>
+                    </button>
+                    <div class="navbar-elite__mobile-submenu">
+                      <ul class="navbar-elite__mobile-submenu-inner">
+                        <li><a href="#" class="navbar-elite__mobile-sublink">Home – Version 1</a></li>
+                        <li><a href="#" class="navbar-elite__mobile-sublink">Home – Version 2</a></li>
+                        <li><a href="#" class="navbar-elite__mobile-sublink">Home – Version 3</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="navbar-elite__mobile-item"><a href="#" class="navbar-elite__mobile-link">About Us</a></li>
+                  <li class="navbar-elite__mobile-item"><a href="#" class="navbar-elite__mobile-link">Services</a></li>
+                  <li class="navbar-elite__mobile-item"><a href="#" class="navbar-elite__mobile-link">Blog</a></li>
+                  <li class="navbar-elite__mobile-item">
+                    <button class="navbar-elite__mobile-link" type="button">
+                      Pages <i data-lucide="chevron-down" class="navbar-elite__mobile-chevron"></i>
+                    </button>
+                    <div class="navbar-elite__mobile-submenu">
+                      <ul class="navbar-elite__mobile-submenu-inner">
+                        <li><a href="#" class="navbar-elite__mobile-sublink">Team</a></li>
+                        <li><a href="#" class="navbar-elite__mobile-sublink">Pricing</a></li>
+                        <li><a href="#" class="navbar-elite__mobile-sublink">FAQ</a></li>
+                        <li><a href="#" class="navbar-elite__mobile-sublink">404 Page</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="navbar-elite__mobile-item"><a href="#" class="navbar-elite__mobile-link">Contact Us</a></li>
+                </ul>
+              </div>
+            </header>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;header class="navbar-elite"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="navbar-elite__row"&gt;
+      &lt;a href="index.html" class="navbar-elite__brand"&gt;
+        &lt;img class="navbar-elite__logo-img" src="assets/img/logos/logo.svg" alt="Finanze"&gt;
+      &lt;/a&gt;
+
+      &lt;nav class="navbar-elite__nav"&gt;
+        &lt;ul class="navbar-elite__menu"&gt;
+          &lt;li class="navbar-elite__item navbar-elite__item--dropdown"&gt;
+            &lt;button class="navbar-elite__link" type="button" aria-expanded="false"&gt;
+              Home &lt;i data-lucide="chevron-down" class="navbar-elite__chevron"&gt;&lt;/i&gt;
+            &lt;/button&gt;
+            &lt;ul class="navbar-elite__dropdown"&gt;
+              &lt;li&gt;&lt;a href="#" class="navbar-elite__dropdown-link"&gt;Home – Version 1&lt;/a&gt;&lt;/li&gt;
+              &lt;!-- … --&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li class="navbar-elite__item"&gt;&lt;a href="#" class="navbar-elite__link"&gt;About Us&lt;/a&gt;&lt;/li&gt;
+          &lt;!-- … resto de items --&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+
+      &lt;a href="#" class="button-elite navbar-elite__cta"&gt;
+        &lt;span class="button-elite__label"&gt;Contact Us&lt;/span&gt;
+        &lt;span class="button-elite__icon"&gt;&lt;i data-lucide="arrow-right"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;/a&gt;
+
+      &lt;button class="navbar-elite__toggle" type="button" aria-expanded="false" aria-label="Abrir menú"&gt;
+        &lt;span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--open"&gt;&lt;i data-lucide="menu"&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--close"&gt;&lt;i data-lucide="x"&gt;&lt;/i&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="navbar-elite__mobile"&gt;
+    &lt;ul class="navbar-elite__mobile-menu"&gt;
+      &lt;li class="navbar-elite__mobile-item"&gt;
+        &lt;button class="navbar-elite__mobile-link" type="button"&gt;Home &lt;i data-lucide="chevron-down" class="navbar-elite__mobile-chevron"&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;div class="navbar-elite__mobile-submenu"&gt;
+          &lt;ul class="navbar-elite__mobile-submenu-inner"&gt;
+            &lt;li&gt;&lt;a href="#" class="navbar-elite__mobile-sublink"&gt;Home – Version 1&lt;/a&gt;&lt;/li&gt;
+            &lt;!-- … --&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;!-- … resto de items --&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;!-- initNavbarElite() en main.js maneja: dropdowns de escritorio (click,
+     cierra al hacer click afuera), el toggle mobile (hamburguesa ↔ X)
+     y los submenús tipo acordeón dentro del panel off-canvas. --&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- COMPONENTES · Footer Elite -->
+    <section class="kit-section" id="footer-elite">
+      <h2 class="kit-section__title">Footer Elite</h2>
+      <p class="kit-section__desc">
+        Pie de página: 4 columnas + barra inferior de copyright/legal. Responsive con el grid de
+        Bootstrap (1 columna en mobile, 2 en tablet, 4 en desktop); la barra inferior pasa de fila
+        a columna y reordena legal/copyright en mobile.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-12">
+          <footer class="footer-elite">
+            <div class="container-fluid">
+              <div class="row g-4 footer-elite__columns">
+
+                <div class="col-12 col-md-6 col-lg-3">
+                  <h3 class="footer-elite__heading">About Company</h3>
+                  <p class="footer-elite__about-desc">We are a trusted finance and consulting firm dedicated to helping businesses &amp; individuals make smarter financial decisions.</p>
+                  <div class="footer-elite__social">
+                    <a href="#" class="footer-elite__social-link" aria-label="Pinterest">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 20c1-3 2-9 2-9"/><path d="M9.5 12a3 3 0 1 1 4 2.8"/></svg>
+                    </a>
+                    <a href="#" class="footer-elite__social-link" aria-label="X (Twitter)">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>
+                    </a>
+                    <a href="#" class="footer-elite__social-link" aria-label="Facebook">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="footer-elite__social-link" aria-label="Instagram">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                  <h3 class="footer-elite__heading">Quick Links</h3>
+                  <ul class="footer-elite__list">
+                    <li><a href="#" class="footer-elite__link">Home</a></li>
+                    <li><a href="#" class="footer-elite__link">About Us</a></li>
+                    <li><a href="#" class="footer-elite__link">Our Services</a></li>
+                    <li><a href="#" class="footer-elite__link">Projects</a></li>
+                    <li><a href="#" class="footer-elite__link">Contact Us</a></li>
+                  </ul>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                  <h3 class="footer-elite__heading">Our Services</h3>
+                  <ul class="footer-elite__list">
+                    <li><a href="#" class="footer-elite__link">Financial Planning</a></li>
+                    <li><a href="#" class="footer-elite__link">Business Consulting</a></li>
+                    <li><a href="#" class="footer-elite__link">Investment Advisory</a></li>
+                    <li><a href="#" class="footer-elite__link">Risk Management</a></li>
+                    <li><a href="#" class="footer-elite__link">Corporate Strategy</a></li>
+                  </ul>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                  <h3 class="footer-elite__heading">Working Hours</h3>
+                  <div class="footer-elite__hours">
+                    <div class="footer-elite__hours-row">
+                      <span class="footer-elite__hours-label">Monday – Friday:</span>
+                      <span class="footer-elite__hours-value">09:00 AM – 05:00 PM</span>
+                    </div>
+                    <div class="footer-elite__hours-row">
+                      <span class="footer-elite__hours-label">Saturday:</span>
+                      <span class="footer-elite__hours-value">09:00 AM – 05:00 PM</span>
+                    </div>
+                    <div class="footer-elite__hours-row">
+                      <span class="footer-elite__hours-label">Sunday:</span>
+                      <span class="footer-elite__hours-value">Closed</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="footer-elite__bottom">
+                <span class="footer-elite__copyright">Copyright © 2026 All Rights Reserved.</span>
+                <div class="footer-elite__legal">
+                  <a href="#" class="footer-elite__legal-link">Help</a>
+                  <a href="#" class="footer-elite__legal-link">Privacy Policy</a>
+                  <a href="#" class="footer-elite__legal-link">Terms &amp; Conditions</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      <div class="kit-snippet">
+        <pre><code>&lt;footer class="footer-elite"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="row g-4 footer-elite__columns"&gt;
+      &lt;div class="col-12 col-md-6 col-lg-3"&gt;
+        &lt;h3 class="footer-elite__heading"&gt;About Company&lt;/h3&gt;
+        &lt;p class="footer-elite__about-desc"&gt;…&lt;/p&gt;
+        &lt;div class="footer-elite__social"&gt;
+          &lt;a href="#" class="footer-elite__social-link" aria-label="Pinterest"&gt;&lt;svg …&gt;&lt;/svg&gt;&lt;/a&gt;
+          &lt;!-- … X, Facebook, Instagram --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-12 col-md-6 col-lg-3"&gt;
+        &lt;h3 class="footer-elite__heading"&gt;Quick Links&lt;/h3&gt;
+        &lt;ul class="footer-elite__list"&gt;
+          &lt;li&gt;&lt;a href="#" class="footer-elite__link"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;!-- … --&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;!-- … Our Services, Working Hours --&gt;
+    &lt;/div&gt;
+
+    &lt;div class="footer-elite__bottom"&gt;
+      &lt;span class="footer-elite__copyright"&gt;Copyright © 2026 All Rights Reserved.&lt;/span&gt;
+      &lt;div class="footer-elite__legal"&gt;
+        &lt;a href="#" class="footer-elite__legal-link"&gt;Help&lt;/a&gt;
+        &lt;a href="#" class="footer-elite__legal-link"&gt;Privacy Policy&lt;/a&gt;
+        &lt;a href="#" class="footer-elite__legal-link"&gt;Terms &amp;amp; Conditions&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;!-- Los íconos de redes sociales son los mismos SVG inline que
+     team-item-metal (Lucide no incluye logos de marca). --&gt;</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- jQuery 3.7.1 (debe ir primero) -->
+  <script src="assets/js/jquery-3.7.1.min.js"></script>
+  <!-- Swiper -->
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- JS propio (siempre al final) -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
