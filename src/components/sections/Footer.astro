@@ -1,4 +1,7 @@
 ---
+import ContactStrip from '../elements/ContactStrip.astro';
+import WhatsAppButton from '../WhatsAppButton.astro';
+
 const quickLinks = [
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Servicios', href: '/servicios' },
@@ -24,6 +27,8 @@ const serviceLinks = [
       <div class="col-12 col-md-6 col-lg-3">
         <h3 class="footer-elite__heading">About Company</h3>
         <p class="footer-elite__about-desc">We are a trusted finance and consulting firm dedicated to helping businesses &amp; individuals make smarter financial decisions.</p>
+        <ContactStrip phone="+51 987 654 321" email="contacto@finanze.com" address="Lima, Perú" />
+        <WhatsAppButton />
         <div class="footer-elite__social">
           <a href="#" class="footer-elite__social-link" aria-label="Pinterest">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 20c1-3 2-9 2-9"/><path d="M9.5 12a3 3 0 1 1 4 2.8"/></svg>

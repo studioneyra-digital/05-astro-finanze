@@ -1,0 +1,15 @@
+---
+interface Props {
+  quote: string;
+  caption: string;
+}
+const { quote, caption } = Astro.props;
+---
+<blockquote class="special-quote">
+  <p class="special-quote__text">“ {quote} ”</p>
+  <hr class="special-quote__divider" />
+  <div class="special-quote__footer">
+    <span class="special-quote__icon"><i data-lucide="check"></i></span>
+    <span class="special-quote__caption">{caption}</span>
+  </div>
+</blockquote>

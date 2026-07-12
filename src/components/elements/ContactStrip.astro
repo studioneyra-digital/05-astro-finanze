@@ -1,0 +1,31 @@
+---
+interface Props {
+  phone: string;
+  email: string;
+  address: string;
+}
+const { phone, email, address } = Astro.props;
+---
+<div class="contact-strip">
+  <a class="contact-strip__item" href={`mailto:${email}`}>
+    <span class="contact-strip__icon"><i data-lucide="mail"></i></span>
+    <div>
+      <span class="contact-strip__label">Correo</span>
+      <span class="contact-strip__value">{email}</span>
+    </div>
+  </a>
+  <a class="contact-strip__item" href={`tel:${phone}`}>
+    <span class="contact-strip__icon"><i data-lucide="phone"></i></span>
+    <div>
+      <span class="contact-strip__label">Teléfono</span>
+      <span class="contact-strip__value">{phone}</span>
+    </div>
+  </a>
+  <div class="contact-strip__item">
+    <span class="contact-strip__icon"><i data-lucide="map-pin"></i></span>
+    <div>
+      <span class="contact-strip__label">Ubicación</span>
+      <span class="contact-strip__value">{address}</span>
+    </div>
+  </div>
+</div>

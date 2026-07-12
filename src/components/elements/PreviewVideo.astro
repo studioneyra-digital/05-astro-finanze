@@ -1,0 +1,15 @@
+---
+interface Props {
+  image: string;
+  href?: string;
+}
+const { image, href = '#' } = Astro.props;
+---
+<a href={href} class="preview-video">
+  <img class="preview-video__img" src={image} alt="Video de presentación" loading="lazy" />
+  <span class="preview-video__play">
+    <span class="preview-video__sonar"></span>
+    <span class="preview-video__sonar preview-video__sonar--delay"></span>
+    <i data-lucide="play" class="preview-video__icon"></i>
+  </span>
+</a>

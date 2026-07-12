@@ -1,0 +1,17 @@
+---
+interface Props {
+  label: string;
+  percent: number;
+  variant?: 'light' | 'dark';
+}
+const { label, percent, variant = 'light' } = Astro.props;
+---
+<div class:list={['progress-bar-metal', `progress-bar-metal--${variant}`]}>
+  <div class="progress-bar-metal__header">
+    <span class="progress-bar-metal__label">{label}</span>
+    <span class="progress-bar-metal__value">{percent}%</span>
+  </div>
+  <div class="progress-bar-metal__track">
+    <div class="progress-bar-metal__fill" style={`width: ${percent}%;`}></div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  value: string;
+  valueSuffix?: string;
+  description: string;
+}
+const { icon, title, value, valueSuffix, description } = Astro.props;
+---
+<div class="card-metric-item">
+  <span class="card-metric-item__icon"><i data-lucide={icon}></i></span>
+  <h4 class="card-metric-item__title">{title}</h4>
+  <hr class="card-metric-item__divider" />
+  <div class="card-metric-item__stat">
+    <span class="card-metric-item__value">
+      {value}
+      {valueSuffix && <span class="card-metric-item__value-plus">{valueSuffix}</span>}
+    </span>
+    <p class="card-metric-item__desc">{description}</p>
+  </div>
+</div>

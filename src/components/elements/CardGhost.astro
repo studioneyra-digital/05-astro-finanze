@@ -1,0 +1,23 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  row?: boolean;
+}
+const { icon, title, description, row = false } = Astro.props;
+---
+<div class:list={['card-ghost-item', { 'card-ghost-item--row': row }]}>
+  <span class="card-ghost-item__icon"><i data-lucide={icon}></i></span>
+  {row ? (
+    <div class="card-ghost-item__content">
+      <h4 class="card-ghost-item__title">{title}</h4>
+      <p class="card-ghost-item__desc">{description}</p>
+    </div>
+  ) : (
+    <>
+      <h4 class="card-ghost-item__title">{title}</h4>
+      <p class="card-ghost-item__desc">{description}</p>
+    </>
+  )}
+</div>
