@@ -1,0 +1,78 @@
+---
+import Nav from './Nav.astro';
+import Badge from '../elements/Badge.astro';
+
+interface Slide {
+  badge: string;
+  titleLine1: string;
+  titleLine2: string;
+  description: string;
+  image: string;
+  alt: string;
+}
+interface Props {
+  slides: Slide[];
+  ctaLabel: string;
+  ctaHref: string;
+  ratingValue: string;
+  ratingCaption: string;
+}
+const { slides, ctaLabel, ctaHref, ratingValue, ratingCaption } = Astro.props;
+---
+<div class="hero-shell">
+  <Nav />
+
+  <section class="hero-elite-slider">
+    <div class="swiper hero-elite-slider__swiper">
+      <div class="swiper-wrapper">
+        {slides.map((slide) => (
+          <div class="swiper-slide hero-elite-slider__slide">
+            <img class="hero-elite-slider__img" src={slide.image} alt={slide.alt} loading="eager" />
+            <span class="hero-elite-slider__scrim"></span>
+            <div class="hero-elite-slider__slide-content">
+              <Badge label={slide.badge} variant="transparent" />
+              <h1 class="hero-elite-slider__title">
+                <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">{slide.titleLine1}</span></span>
+                <span class="hero-elite-slider__title-mask"><span class="hero-elite-slider__title-line">{slide.titleLine2}</span></span>
+              </h1>
+              <p class="hero-elite-slider__desc">{slide.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="hero-elite-slider__footer">
+      <div class="hero-elite-slider__pagination swiper-pagination"></div>
+      <hr class="hero-elite-slider__divider" />
+      <div class="hero-elite-slider__footer-row">
+        <a href={ctaHref} class="button-elite">
+          <span class="button-elite__label">{ctaLabel}</span>
+          <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+        </a>
+        <div class="hero-elite-v1__social">
+          <div class="hero-elite-v1__social-row">
+            <div class="hero-elite-v1__avatars">
+              <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=100&auto=format&fit=crop" alt="" loading="lazy" />
+              <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=100&auto=format&fit=crop" alt="" loading="lazy" />
+              <img class="hero-elite-v1__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop" alt="" loading="lazy" />
+            </div>
+            <span class="hero-elite-v1__stars">
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+              <i data-lucide="star"></i>
+            </span>
+            <span class="hero-elite-v1__rating-value">{ratingValue}</span>
+          </div>
+          <span class="hero-elite-v1__rating-caption">{ratingCaption}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  import { initHeroSlider } from '../../scripts/heroSlider';
+  initHeroSlider();
+</script>

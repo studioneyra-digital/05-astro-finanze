@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  plans: CollectionEntry<'plans'>[];
+}
+const { plans } = Astro.props;
+---
+<div class="pricing-toggle-group" data-pricing-toggle>
+  <div class="d-flex justify-content-center mb-5">
+    <div class="pricing-toggle">
+      <span class="pricing-toggle__label is-active" data-period="monthly">Monthly</span>
+      <button class="pricing-toggle__switch" type="button" role="switch" aria-checked="false" aria-label="Cambiar a facturación anual">
+        <span class="pricing-toggle__switch-thumb"></span>
+      </button>
+      <span class="pricing-toggle__label" data-period="yearly">Yearly</span>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    {plans.map((plan) => (
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class:list={['pricing-tab-item', { 'pricing-tab-item--active': plan.data.highlighted }]}>
+          {plan.data.highlighted && (
+            <span class="pricing-tab-item__ribbon badge badge--light">
+              <i data-lucide="star" class="badge__icon"></i>
+              Most Popular
+            </span>
+          )}
+          <span class="pricing-tab-item__icon"><i data-lucide={plan.data.icon}></i></span>
+          <h4 class="pricing-tab-item__title">{plan.data.planName}</h4>
+          <p class="pricing-tab-item__desc">{plan.data.description}</p>
+
+          <div class="pricing-tab-item__panel">
+            <div class="pricing-tab-item__price">
+              <span class="pricing-tab-item__price-view is-active" data-period="monthly">
+                <span class="pricing-tab-item__price-amount">{plan.data.priceMonthly}</span>
+                <span class="pricing-tab-item__price-period">/Monthly</span>
+              </span>
+              <span class="pricing-tab-item__price-view" data-period="yearly">
+                <span class="pricing-tab-item__price-amount">{plan.data.priceYearly}</span>
+                <span class="pricing-tab-item__price-period">/Yearly</span>
+              </span>
+            </div>
+            <hr class="pricing-tab-item__divider" />
+            <p class="pricing-tab-item__included">What's Included:</p>
+            <ul class="pricing-tab-item__features">
+              {plan.data.features.map((feature) => (
+                <li class="pricing-tab-item__feature">
+                  <span class="pricing-tab-item__feature-icon"><i data-lucide="check"></i></span>
+                  <span class="pricing-tab-item__feature-label">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a href="/contacto" class="button-elite button-elite--block pricing-tab-item__cta">
+            <span class="button-elite__label">Get Started With Plan</span>
+            <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  import { initPricingToggle } from '../../scripts/pricingToggle';
+  const root = document.querySelector<HTMLElement>('[data-pricing-toggle]');
+  if (root) initPricingToggle(root);
+</script>

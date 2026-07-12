@@ -1,0 +1,48 @@
+---
+import FormField from '../elements/FormField.astro';
+import Button from '../elements/Button.astro';
+import Alert from '../elements/Alert.astro';
+
+interface Props {
+  variant?: 'light' | 'dark';
+}
+const { variant = 'light' } = Astro.props;
+---
+<div class:list={['form-panel', `form-panel--${variant}`]}>
+  <h3 class="form-panel__title">Get In Touch</h3>
+  <hr class="form-panel__divider" />
+  <form class="form-panel__form" data-contact-form>
+    <div class="row g-4">
+      <div class="col-12 col-sm-6">
+        <FormField id="contact-first-name" name="firstName" label="First Name" type="text" variant={variant} required />
+      </div>
+      <div class="col-12 col-sm-6">
+        <FormField id="contact-last-name" name="lastName" label="Last Name" type="text" variant={variant} required />
+      </div>
+      <div class="col-12 col-sm-6">
+        <FormField id="contact-phone" name="phone" label="Phone No." type="tel" variant={variant} required />
+      </div>
+      <div class="col-12 col-sm-6">
+        <FormField id="contact-email" name="email" label="E-mail Address" type="email" variant={variant} required />
+      </div>
+      <div class="col-12">
+        <FormField id="contact-message" name="message" label="Write Message..." type="text" as="textarea" variant={variant} required />
+      </div>
+      <div class="col-12">
+        <Button label="Send Message" type="submit" />
+      </div>
+      <div class="col-12" data-form-success hidden>
+        <Alert variant="success" title="¡Listo!" message="Tu solicitud fue enviada correctamente. Te contactaremos en breve." />
+      </div>
+      <div class="col-12" data-form-error hidden>
+        <Alert variant="error" title="Revisa el formulario" message="" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  import { initContactForm } from '../../scripts/contactForm';
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  if (form) initContactForm(form);
+</script>

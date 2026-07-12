@@ -1,0 +1,58 @@
+---
+import ExpertiseItemElite from '../elements/ExpertiseItemElite.astro';
+
+interface TrustItem {
+  icon: string;
+  label: string;
+}
+interface ExpertiseItem {
+  title: string;
+  description: string;
+  percent: number;
+}
+interface Props {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  image1: string;
+  image2: string;
+  trustItems: TrustItem[];
+  expertiseItems: ExpertiseItem[];
+}
+const { eyebrow, heading, description, image1, image2, trustItems, expertiseItems } = Astro.props;
+---
+<section class="about-us" id="about">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-12 col-lg-6">
+        <div class="about-us__media">
+          <img class="about-us__img about-us__img--1" src={image1} alt="Equipo de asesores financieros en reunión" loading="lazy" />
+          <img class="about-us__img about-us__img--2" src={image2} alt="Consultora revisando reportes financieros" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="section-header">
+          <span class="eyebrow"><span class="eyebrow__line"></span>{eyebrow}</span>
+          <h2 class="section-header__title">{heading}</h2>
+          <p class="section-header__desc">{description}</p>
+        </div>
+
+        <div class="about-us__list">
+          {trustItems.map((item) => (
+            <div class="about-us-item-elite">
+              <span class="about-us-item-elite__icon"><i data-lucide={item.icon}></i></span>
+              <span class="about-us-item-elite__label">{item.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="expertise-item-list-elite about-us__expertise">
+          {expertiseItems.map((item) => (
+            <ExpertiseItemElite title={item.title} description={item.description} percent={item.percent} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  items: string[];
+  backgroundImage: string;
+}
+const { items, backgroundImage } = Astro.props;
+---
+<section class="marquee-section">
+  <img class="marquee-section__bg" src={backgroundImage} alt="" loading="lazy" />
+  <div class="container">
+    <div class="marquee marquee--dark">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          {items.map((item) => (
+            <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>{item}</span>
+          ))}
+        </div>
+        <div class="marquee__group" aria-hidden="true">
+          {items.map((item) => (
+            <span class="marquee__item"><i data-lucide="asterisk" class="marquee__icon"></i>{item}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

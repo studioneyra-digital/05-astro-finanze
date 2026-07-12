@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TeamItemMetal from '../elements/TeamItemMetal.astro';
+
+interface Props {
+  members: CollectionEntry<'team'>[];
+}
+const { members } = Astro.props;
+---
+<div class="row g-4">
+  {members.map((member) => (
+    <div class="col-12 col-sm-6 col-lg-4">
+      <TeamItemMetal name={member.data.name} role={member.data.role} photo={member.data.photo} />
+    </div>
+  ))}
+</div>

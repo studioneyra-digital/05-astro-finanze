@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import CardProjectItem from '../elements/CardProjectItem.astro';
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  projects: CollectionEntry<'projects'>[];
+}
+const { eyebrow, heading, description, projects } = Astro.props;
+---
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><span class="eyebrow__line"></span>{eyebrow}</span>
+      <h2 class="section-header__title">{heading}</h2>
+      <p class="section-header__desc">{description}</p>
+    </div>
+
+    <div class="projects-slider">
+      <div class="projects-slider__swiper swiper">
+        <div class="swiper-wrapper">
+          {projects.map((project) => (
+            <div class="swiper-slide">
+              <CardProjectItem
+                title={project.data.title}
+                category={project.data.category}
+                image={project.data.image}
+                href={`/proyectos/${project.slug}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="projects-slider__pagination"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initProjectsSlider } from '../../scripts/projectsSlider';
+  initProjectsSlider();
+</script>
