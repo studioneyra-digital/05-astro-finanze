@@ -1,0 +1,14 @@
+{
+  "planName": "Basic Plan",
+  "icon": "database",
+  "description": "Ideal for small business & individuals",
+  "priceMonthly": "$49.00",
+  "priceYearly": "$490.00",
+  "features": [
+    "Multi Expert Consulting Team",
+    "24/7 Priority Support and Services",
+    "Corporate Strategy, Transformation",
+    "Email Support & Guidance"
+  ],
+  "highlighted": false
+}

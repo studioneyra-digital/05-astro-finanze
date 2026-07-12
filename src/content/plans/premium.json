@@ -1,0 +1,14 @@
+{
+  "planName": "Premium Plan",
+  "icon": "layout-dashboard",
+  "description": "Ideal for established businesses with complex needs",
+  "priceMonthly": "$449.00",
+  "priceYearly": "$4,490.00",
+  "features": [
+    "Everything in Standard Plan",
+    "Custom Risk & Compliance Audit",
+    "Monthly Strategy Sessions",
+    "Direct Line to Senior Advisors"
+  ],
+  "highlighted": false
+}

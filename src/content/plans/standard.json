@@ -1,0 +1,14 @@
+{
+  "planName": "Standard Plan",
+  "icon": "command",
+  "description": "Ideal for growing teams and expanding operations",
+  "priceMonthly": "$149.00",
+  "priceYearly": "$1,490.00",
+  "features": [
+    "Everything in Basic Plan",
+    "Quarterly Portfolio Review",
+    "Dedicated Account Manager",
+    "Priority Phone Support"
+  ],
+  "highlighted": true
+}
