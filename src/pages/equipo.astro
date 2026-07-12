@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import TeamGrid from '../components/sections/TeamGrid.astro';
+
+const members = await getCollection('team');
+---
+<PageLayout
+  title="Equipo | Finanze"
+  description="Conoce a los consultores detrás de Finanze."
+  subHeroTitle="Nuestro equipo"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Equipo' }]}
+  ctaHeading="¿Quieres trabajar con nosotros?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <TeamGrid members={members} />
+  </div>
+</PageLayout>

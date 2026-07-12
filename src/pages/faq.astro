@@ -1,0 +1,47 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import FaqAccordion from '../components/sections/FaqAccordion.astro';
+import CardGhost from '../components/elements/CardGhost.astro';
+
+const items = [
+  {
+    question: 'What services do you offer?',
+    answer: 'We provide a range of financial and consulting services including business strategy, financial planning, investment advisory, risk management, and operational consulting to help businesses grow and succeed.',
+  },
+  {
+    question: 'Who can benefit from your consulting services?',
+    answer: 'Our services are built for startups, small businesses, and established companies looking to strengthen their financial strategy, streamline operations, and plan for sustainable growth.',
+  },
+  {
+    question: 'How do you create a financial strategy for clients?',
+    answer: 'We start with a full review of your current financial position, then build a tailored strategy around your goals, industry, and risk tolerance, revisiting it regularly as your business evolves.',
+  },
+  {
+    question: 'Do you offer personalized financial advice?',
+    answer: 'Yes. Every engagement starts with a one-on-one consultation so our recommendations reflect your specific numbers, goals, and constraints, not a generic template.',
+  },
+  {
+    question: 'How do you ensure confidentiality of financial information?',
+    answer: 'All client data is handled under strict confidentiality agreements and stored on secure, access-controlled systems, reviewed regularly to meet industry compliance standards.',
+  },
+];
+---
+<PageLayout
+  title="Preguntas frecuentes | Finanze"
+  description="Resolvemos las dudas más comunes sobre nuestros servicios."
+  subHeroTitle="Preguntas frecuentes"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'FAQ' }]}
+  ctaHeading="¿Tienes otra pregunta?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <FaqAccordion items={items} />
+    <CardGhost
+      icon="message-circle-question"
+      title="¿No encontraste tu respuesta?"
+      description="Escríbenos y te responderemos a la brevedad."
+    />
+  </div>
+</PageLayout>

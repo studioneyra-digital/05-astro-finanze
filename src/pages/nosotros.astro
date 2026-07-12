@@ -1,0 +1,82 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import CardFeature from '../components/elements/CardFeature.astro';
+import ProgressBarMetal from '../components/elements/ProgressBarMetal.astro';
+import Divider from '../components/elements/Divider.astro';
+import PreviewVideo from '../components/elements/PreviewVideo.astro';
+import SpecialQuote from '../components/elements/SpecialQuote.astro';
+
+const aboutTrustItems = [
+  { icon: 'handshake', label: 'Trusted and reliable partner' },
+  { icon: 'activity', label: 'Data-driven financial strategy' },
+  { icon: 'binoculars', label: 'Long-term vision, not quick fixes' },
+];
+
+const aboutExpertiseItems = [
+  { title: 'Financial strategy', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 70 },
+  { title: 'Advisory services', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 90 },
+  { title: 'Business excellence', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 80 },
+];
+
+const featureItems = [
+  { icon: 'users', title: 'Equipo experto', description: 'Consultores con más de 20 años de trayectoria combinada en finanzas y consultoría.' },
+  { icon: 'shield', title: 'Cumplimiento sólido', description: 'Procesos alineados a las normativas vigentes en cada industria que atendemos.' },
+  { icon: 'trending-up', title: 'Resultados medibles', description: 'Seguimiento constante de indicadores clave, no solo un reporte al cierre del proyecto.' },
+];
+---
+<PageLayout
+  title="Nosotros | Finanze"
+  description="Conoce la trayectoria y el equipo detrás de Finanze."
+  subHeroTitle="Nosotros"
+  subHeroImage="/assets/img/lib/about-us-image-1-elite.jpg"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Nosotros' }]}
+  ctaHeading="¿Listo para dar el siguiente paso?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+  ctaSecondaryLabel="Ver equipo"
+  ctaSecondaryHref="/equipo"
+>
+  <AboutSection
+    eyebrow="About Us"
+    heading="Two decades of financial expertise, built on trust"
+    description="We combine deep industry knowledge with a personal approach, helping businesses and individuals make confident financial decisions at every stage of growth."
+    image1="/assets/img/lib/about-us-image-1-elite.jpg"
+    image2="/assets/img/lib/about-us-image-2-elite.jpg"
+    trustItems={aboutTrustItems}
+    expertiseItems={aboutExpertiseItems}
+  />
+  <Divider />
+  <div class="container">
+    <div class="row g-4">
+      {featureItems.map((item) => (
+        <div class="col-12 col-sm-6 col-lg-4">
+          <CardFeature icon={item.icon} title={item.title} description={item.description} />
+        </div>
+      ))}
+    </div>
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <ProgressBarMetal label="Satisfacción de clientes" percent={95} />
+      </div>
+      <div class="col-12 col-lg-6">
+        <ProgressBarMetal label="Proyectos exitosos" percent={88} />
+      </div>
+    </div>
+  </div>
+  <Divider />
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-12 col-lg-6">
+        <PreviewVideo image="/assets/img/lib/core-feature-video-image-elite.jpg" />
+      </div>
+      <div class="col-12 col-lg-6">
+        <SpecialQuote
+          quote="Smart financial decisions today create the foundation for sustainable growth."
+          caption="Expert backed information that helps you understand."
+        />
+      </div>
+    </div>
+  </div>
+</PageLayout>

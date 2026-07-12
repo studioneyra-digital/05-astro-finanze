@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import PricingPlans from '../components/sections/PricingPlans.astro';
+
+const plans = await getCollection('plans');
+---
+<PageLayout
+  title="Planes | Finanze"
+  description="Elige el plan de asesoría financiera que se ajuste a tu negocio."
+  subHeroTitle="Planes"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Planes' }]}
+  ctaHeading="¿No estás seguro qué plan elegir?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <PricingPlans plans={plans} />
+  </div>
+</PageLayout>

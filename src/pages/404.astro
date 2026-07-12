@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+---
+<BaseLayout title="Página no encontrada | Finanze" description="La página que buscas no existe.">
+  <Nav solid />
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow"><span class="eyebrow__line"></span>404</span>
+      <h1 class="section-header__title">Página no encontrada</h1>
+      <p class="section-header__desc">La página que buscas no existe o fue movida.</p>
+    </div>
+    <a href="/" class="button-elite">
+      <span class="button-elite__label">Volver al inicio</span>
+      <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+    </a>
+  </div>
+  <Footer />
+</BaseLayout>

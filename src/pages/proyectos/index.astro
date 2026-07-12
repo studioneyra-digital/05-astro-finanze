@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import CardProjectItem from '../../components/elements/CardProjectItem.astro';
+
+const projects = await getCollection('projects');
+---
+<PageLayout
+  title="Proyectos | Finanze"
+  description="Casos y resultados reales para negocios reales."
+  subHeroTitle="Proyectos"
+  subHeroImage="/assets/img/lib/project-2.jpg"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Proyectos' }]}
+  ctaHeading="¿Quieres resultados como estos?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <div class="row g-4">
+      {projects.map((project) => (
+        <div class="col-12 col-sm-6 col-lg-4">
+          <CardProjectItem
+            title={project.data.title}
+            category={project.data.category}
+            image={project.data.image}
+            href={`/proyectos/${project.slug}`}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</PageLayout>

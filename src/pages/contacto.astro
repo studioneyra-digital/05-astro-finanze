@@ -1,0 +1,18 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ContactForm from '../components/sections/ContactForm.astro';
+---
+<PageLayout
+  title="Contacto | Finanze"
+  description="Escríbenos y conversemos sobre tu estrategia financiera."
+  subHeroTitle="Contacto"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Contacto' }]}
+  ctaHeading="Estamos para ayudarte"
+  ctaDescription="Revisa nuestros planes de asesoría o escríbenos directamente."
+  ctaPrimaryLabel="Ver planes"
+  ctaPrimaryHref="/planes"
+>
+  <div class="container">
+    <ContactForm variant="light" />
+  </div>
+</PageLayout>

@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+
+const testimonials = await getCollection('testimonials');
+---
+<PageLayout
+  title="Testimonios | Finanze"
+  description="Lo que dicen nuestros clientes sobre trabajar con Finanze."
+  subHeroTitle="Testimonios"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Testimonios' }]}
+  ctaHeading="Únete a nuestros clientes satisfechos"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <TestimonialsSection
+    eyebrow="Testimonials"
+    heading="Trusted by businesses and individuals alike"
+    description="Hear directly from the clients we've helped plan, protect, and grow their finances."
+    ratingScore="4.9/5.0"
+    reviewCount={25000}
+    testimonials={testimonials}
+  />
+</PageLayout>

@@ -1,15 +1,108 @@
 ---
-import PageLayout from '../layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import Marquee from '../components/sections/Marquee.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import ServicesSection from '../components/sections/ServicesSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import CtaBand from '../components/elements/CtaBand.astro';
+import Footer from '../components/sections/Footer.astro';
+import ScrollTop from '../components/elements/ScrollTop.astro';
+
+const services = await getCollection('services');
+const projects = await getCollection('projects');
+const testimonials = await getCollection('testimonials');
+
+const heroSlides = [
+  {
+    badge: 'Finance & Consulting Experts',
+    titleLine1: 'Driving growth through',
+    titleLine2: 'financial strategy',
+    description: 'We help businesses and individuals navigate complex financial landscapes with confidence through strategic planning.',
+    image: '/assets/img/lib/hero-bg-image-elite.jpg',
+    alt: 'Consultoras revisando una estrategia financiera',
+  },
+  {
+    badge: 'Data-Driven Advisory',
+    titleLine1: 'Strategic advisory for',
+    titleLine2: 'lasting success',
+    description: 'Our experts craft tailored strategies that turn financial complexity into clear, confident decisions.',
+    image: '/assets/img/lib/service-image-3-elite.jpg',
+    alt: 'Analistas revisando reportes financieros',
+  },
+  {
+    badge: 'Trusted by Teams',
+    titleLine1: 'Building wealth with',
+    titleLine2: 'proven expertise',
+    description: 'From planning to execution, we help you grow, protect, and manage your financial future.',
+    image: '/assets/img/lib/service-image-4-elite.jpg',
+    alt: 'Equipo de consultoría planificando en conjunto',
+  },
+];
+
+const aboutTrustItems = [
+  { icon: 'handshake', label: 'Trusted and reliable partner' },
+  { icon: 'activity', label: 'Data-driven financial strategy' },
+  { icon: 'binoculars', label: 'Long-term vision, not quick fixes' },
+];
+
+const aboutExpertiseItems = [
+  { title: 'Financial strategy', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 70 },
+  { title: 'Advisory services', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 90 },
+  { title: 'Business excellence', description: 'We design data-driven financial strategies that help performance, manage risks, & achieve long-term stability.', percent: 80 },
+];
 ---
-<PageLayout
-  title="Finanze | Business theme"
-  description="Asesoría financiera y de consultoría para negocios en crecimiento."
-  subHeroTitle="Home (placeholder)"
-  breadcrumb={[{ label: 'Inicio' }]}
-  ctaHeading="¿Listo para dar el siguiente paso?"
-  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
-  ctaPrimaryLabel="Contáctanos"
-  ctaPrimaryHref="/contacto"
->
-  <p>Placeholder content — Task 39 replaces this with the real Home page.</p>
-</PageLayout>
+<BaseLayout title="Finanze | Business theme" description="Finanze — soluciones estratégicas de finanzas y consultoría para el crecimiento de tu negocio.">
+  <Hero
+    slides={heroSlides}
+    ctaLabel="Get Started"
+    ctaHref="/contacto"
+    ratingValue="4.6"
+    ratingCaption="Our 100+ Happy Customers"
+  />
+  <Marquee
+    items={['Investment Advisory', 'Financial Reporting and Analysis', 'Regulatory Compliance Support']}
+    backgroundImage="/assets/img/lib/core-feature-video-image-elite.jpg"
+  />
+  <AboutSection
+    eyebrow="About Us"
+    heading="Two decades of financial expertise, built on trust"
+    description="We combine deep industry knowledge with a personal approach, helping businesses and individuals make confident financial decisions at every stage of growth."
+    image1="/assets/img/lib/about-us-image-1-elite.jpg"
+    image2="/assets/img/lib/about-us-image-2-elite.jpg"
+    trustItems={aboutTrustItems}
+    expertiseItems={aboutExpertiseItems}
+  />
+  <ServicesSection
+    eyebrow="Our Services"
+    heading="Comprehensive solutions for every financial decision"
+    description="From day-to-day planning to long-term strategy, our team delivers the expertise your business needs to grow with confidence."
+    services={services}
+  />
+  <ProjectsSection
+    eyebrow="Projects"
+    heading="Real results for real businesses"
+    description="A look at how we've helped clients turn financial challenges into measurable growth."
+    projects={projects}
+  />
+  <TestimonialsSection
+    eyebrow="Testimonials"
+    heading="Trusted by businesses and individuals alike"
+    description="Hear directly from the clients we've helped plan, protect, and grow their finances."
+    ratingScore="4.9/5.0"
+    reviewCount={25000}
+    testimonials={testimonials}
+  />
+  <CtaBand
+    heading="¿Listo para dar el siguiente paso?"
+    description="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+    primaryCtaLabel="Contáctanos"
+    primaryCtaHref="/contacto"
+    secondaryCtaLabel="Ver proyectos"
+    secondaryCtaHref="/proyectos"
+  />
+  <Footer />
+  <ScrollTop />
+</BaseLayout>

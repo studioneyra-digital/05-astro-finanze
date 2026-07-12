@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import CardServiceItem from '../../components/elements/CardServiceItem.astro';
+import Stepper from '../../components/elements/Stepper.astro';
+import Divider from '../../components/elements/Divider.astro';
+import IndustriesTabs from '../../components/sections/IndustriesTabs.astro';
+
+const services = await getCollection('services');
+const steps = [{ label: 'Diagnóstico' }, { label: 'Estrategia' }, { label: 'Implementación' }];
+---
+<PageLayout
+  title="Servicios | Finanze"
+  description="Conoce nuestros servicios de asesoría financiera y consultoría de negocios."
+  subHeroTitle="Servicios"
+  subHeroImage="/assets/img/lib/service-image-2-elite.jpg"
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Servicios' }]}
+  ctaHeading="¿Necesitas asesoría personalizada?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <div class="row g-4">
+      {services.map((service) => (
+        <div class="col-12 col-sm-6 col-lg-3">
+          <CardServiceItem
+            title={service.data.title}
+            icon={service.data.icon}
+            description={service.data.description}
+            image={service.data.image}
+            href={`/servicios/${service.slug}`}
+          />
+        </div>
+      ))}
+    </div>
+
+    <Divider text="Cómo trabajamos" />
+    <Stepper steps={steps} activeIndex={0} />
+
+    <Divider text="Industrias a las que servimos" />
+    <IndustriesTabs />
+  </div>
+</PageLayout>

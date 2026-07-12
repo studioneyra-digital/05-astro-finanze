@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<PageLayout
+  title={`${post.data.title} | Finanze`}
+  description={post.data.excerpt}
+  subHeroTitle={post.data.title}
+  subHeroImage={post.data.image}
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Blog', href: '/blog' }, { label: post.data.title }]}
+  ctaHeading="¿Quieres asesoría personalizada?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <article>
+      <p>
+        <time datetime={post.data.publishDate}>{post.data.publishDate}</time>
+        {post.data.author && <span> — {post.data.author}</span>}
+      </p>
+      <Content />
+    </article>
+  </div>
+</PageLayout>

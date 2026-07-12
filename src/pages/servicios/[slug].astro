@@ -1,0 +1,35 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+const { service } = Astro.props;
+const { Content } = await service.render();
+---
+<PageLayout
+  title={`${service.data.title} | Finanze`}
+  description={service.data.description}
+  subHeroTitle={service.data.title}
+  subHeroImage={service.data.image}
+  breadcrumb={[{ label: 'Inicio', href: '/' }, { label: 'Servicios', href: '/servicios' }, { label: service.data.title }]}
+  ctaHeading="¿Necesitas este servicio?"
+  ctaDescription="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+  ctaPrimaryLabel="Contáctanos"
+  ctaPrimaryHref="/contacto"
+>
+  <div class="container">
+    <article>
+      <Content />
+    </article>
+  </div>
+</PageLayout>
