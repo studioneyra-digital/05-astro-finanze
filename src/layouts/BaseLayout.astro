@@ -1,4 +1,6 @@
 ---
+import CookieBanner from '../components/elements/CookieBanner.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -27,6 +29,7 @@ const { title, description, ogImage = '/assets/img/og-image.jpg' } = Astro.props
 </head>
 <body>
   <slot />
+  <CookieBanner />
 
   <script src="/assets/js/swiper-bundle.min.js" is:inline></script>
   <script src="/assets/js/wow.min.js" is:inline></script>

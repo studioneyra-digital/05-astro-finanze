@@ -1,0 +1,13 @@
+---
+interface Props {
+  text?: string;
+  align?: 'center' | 'left' | 'right';
+  style?: 'dashed' | 'dotted';
+}
+const { text, align = 'center', style } = Astro.props;
+---
+{text ? (
+  <div class:list={['divider', { [`divider--${align}`]: align !== 'center' }, { [`divider--${style}`]: style }]}>{text}</div>
+) : (
+  <hr class="divider divider--plain" />
+)}

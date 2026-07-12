@@ -1,0 +1,28 @@
+---
+import Alert from './Alert.astro';
+
+interface Props {
+  heading: string;
+  description: string;
+}
+const { heading, description } = Astro.props;
+---
+<div class="newsletter">
+  <h3 class="newsletter__title">{heading}</h3>
+  <p class="newsletter__desc">{description}</p>
+  <form class="newsletter__form" data-newsletter>
+    <input class="newsletter__input" type="email" placeholder="tu@email.com" required />
+    <button class="newsletter__submit" type="submit">Suscribirme</button>
+  </form>
+  <div data-newsletter-success hidden>
+    <Alert variant="success" title="¡Listo!" message="Gracias por suscribirte." />
+  </div>
+  <div data-newsletter-error hidden>
+    <Alert variant="error" title="Correo inválido" message="Ingresa un correo válido." />
+  </div>
+</div>
+
+<script>
+  import { initNewsletter } from '../../scripts/newsletter';
+  document.querySelectorAll<HTMLFormElement>('[data-newsletter]').forEach(initNewsletter);
+</script>

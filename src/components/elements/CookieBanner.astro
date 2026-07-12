@@ -1,0 +1,21 @@
+---
+---
+<div class="cookie-banner-wrap" data-cookie-banner>
+  <div class="cookie-banner">
+    <span class="cookie-banner__icon"><i data-lucide="cookie"></i></span>
+    <div class="cookie-banner__content">
+      <h4 class="cookie-banner__title">Usamos cookies</h4>
+      <p class="cookie-banner__desc">Mejoramos tu experiencia y medimos el uso del sitio. Revisa nuestra <a href="#" class="cookie-banner__link">Política de privacidad</a>.</p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__btn cookie-banner__btn--ghost" type="button" data-cookie-reject>Rechazar</button>
+      <button class="cookie-banner__btn cookie-banner__btn--solid" type="button" data-cookie-accept>Aceptar todo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { initCookieBanner } from '../../scripts/cookieBanner';
+  const wrap = document.querySelector<HTMLElement>('[data-cookie-banner]');
+  if (wrap) initCookieBanner(wrap);
+</script>

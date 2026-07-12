@@ -1,0 +1,15 @@
+---
+interface Props {
+  steps: { label: string }[];
+  activeIndex: number;
+}
+const { steps, activeIndex } = Astro.props;
+---
+<div class="stepper">
+  {steps.map((step, index) => (
+    <div class:list={['stepper__step', { 'is-done': index < activeIndex, 'is-active': index === activeIndex }]}>
+      <span class="stepper__circle">{index + 1}</span>
+      <span class="stepper__label">{step.label}</span>
+    </div>
+  ))}
+</div>
