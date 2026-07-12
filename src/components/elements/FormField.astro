@@ -1,0 +1,19 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'tel';
+  as?: 'input' | 'textarea';
+  variant?: 'light' | 'dark';
+  required?: boolean;
+}
+const { id, name, label, type, as = 'input', variant = 'light', required = false } = Astro.props;
+const fieldClass = `form-field form-field--${variant}`;
+---
+<label class="sr-only" for={id}>{label}</label>
+{as === 'textarea' ? (
+  <textarea class={fieldClass} id={id} name={name} placeholder={label} required={required}></textarea>
+) : (
+  <input class={fieldClass} type={type} id={id} name={name} placeholder={label} required={required} />
+)}

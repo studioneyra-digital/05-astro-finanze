@@ -1,0 +1,23 @@
+---
+interface Props {
+  variant?: 'info' | 'success' | 'warning' | 'error';
+  title: string;
+  message: string;
+}
+const { variant = 'info', title, message } = Astro.props;
+
+const icons: Record<string, string> = {
+  info: 'info',
+  success: 'check-circle',
+  warning: 'alert-triangle',
+  error: 'x-circle',
+};
+---
+<div class:list={['alert', { [`alert--${variant}`]: variant !== 'info' }]} data-alert role="status">
+  <span class="alert__icon"><i data-lucide={icons[variant]}></i></span>
+  <div class="alert__body">
+    <h4 class="alert__title">{title}</h4>
+    <p class="alert__desc">{message}</p>
+  </div>
+  <button class="alert__close" type="button" data-alert-dismiss aria-label="Cerrar aviso"><i data-lucide="x"></i></button>
+</div>

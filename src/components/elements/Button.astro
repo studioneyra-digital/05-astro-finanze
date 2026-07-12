@@ -1,0 +1,21 @@
+---
+interface Props {
+  href?: string;
+  label: string;
+  type?: 'button' | 'submit';
+  block?: boolean;
+}
+const { href, label, type = 'button', block = false } = Astro.props;
+const classes = ['button-elite', { 'button-elite--block': block }];
+---
+{href ? (
+  <a class:list={classes} href={href}>
+    <span class="button-elite__label">{label}</span>
+    <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+  </a>
+) : (
+  <button class:list={classes} type={type}>
+    <span class="button-elite__label">{label}</span>
+    <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+  </button>
+)}

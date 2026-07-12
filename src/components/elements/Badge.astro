@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string;
+  variant?: 'light' | 'transparent';
+  icon?: string;
+}
+const { label, variant = 'light', icon = 'asterisk' } = Astro.props;
+---
+<span class:list={['badge', `badge--${variant}`]}>
+  <i data-lucide={icon} class="badge__icon"></i>
+  <span class="badge__label">{label}</span>
+</span>
