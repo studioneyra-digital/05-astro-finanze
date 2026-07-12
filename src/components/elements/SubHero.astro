@@ -1,0 +1,35 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+interface Props {
+  title: string;
+  breadcrumb: BreadcrumbItem[];
+  image?: string;
+}
+const { title, breadcrumb, image } = Astro.props;
+---
+<section class:list={['sub-hero', { 'sub-hero--dark': !image }]}>
+  {image && (
+    <Fragment>
+      <img class="sub-hero__img" src={image} alt="" loading="eager" />
+      <span class="sub-hero__scrim"></span>
+    </Fragment>
+  )}
+  <div class="sub-hero__content">
+    <h1 class="sub-hero__title">{title}</h1>
+    <nav class="sub-hero__breadcrumb" aria-label="breadcrumb">
+      {breadcrumb.map((item, index) => (
+        <Fragment>
+          {item.href ? (
+            <a href={item.href} class="sub-hero__breadcrumb-link">{item.label}</a>
+          ) : (
+            <span class="sub-hero__breadcrumb-current">{item.label}</span>
+          )}
+          {index < breadcrumb.length - 1 && <span class="sub-hero__breadcrumb-sep">/</span>}
+        </Fragment>
+      ))}
+    </nav>
+  </div>
+</section>

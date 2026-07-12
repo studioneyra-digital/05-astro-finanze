@@ -1,0 +1,25 @@
+---
+interface Props {
+  heading: string;
+  description: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
+}
+const { heading, description, primaryCtaLabel, primaryCtaHref, secondaryCtaLabel, secondaryCtaHref } = Astro.props;
+---
+<div class="cta-band">
+  <span class="cta-band__decor"></span>
+  <span class="cta-band__decor cta-band__decor--sm"></span>
+  <div class="cta-band__content">
+    <h3 class="cta-band__title">{heading}</h3>
+    <p class="cta-band__desc">{description}</p>
+    <div class="cta-band__actions">
+      <a href={primaryCtaHref} class="cta-band__btn cta-band__btn--solid">{primaryCtaLabel}</a>
+      {secondaryCtaLabel && secondaryCtaHref && (
+        <a href={secondaryCtaHref} class="cta-band__btn cta-band__btn--outline">{secondaryCtaLabel}</a>
+      )}
+    </div>
+  </div>
+</div>

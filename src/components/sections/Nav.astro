@@ -1,0 +1,57 @@
+---
+interface Props {
+  solid?: boolean;
+}
+const { solid = false } = Astro.props;
+
+const links = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Proyectos', href: '/proyectos' },
+  { label: 'Planes', href: '/planes' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contacto', href: '/contacto' },
+];
+---
+<header class:list={['navbar-elite', { 'is-scrolled': solid }]} data-navbar>
+  <div class="container">
+    <div class="navbar-elite__row">
+      <a href="/" class="navbar-elite__brand">
+        <img class="navbar-elite__logo-img" src="/assets/img/logos/logo-white.svg" alt="Finanze" />
+      </a>
+
+      <nav class="navbar-elite__nav">
+        <ul class="navbar-elite__menu">
+          {links.map((link) => (
+            <li class="navbar-elite__item"><a href={link.href} class="navbar-elite__link">{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <a href="/contacto" class="button-elite navbar-elite__cta">
+        <span class="button-elite__label">Contact Us</span>
+        <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+      </a>
+
+      <button class="navbar-elite__toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--open"><i data-lucide="menu"></i></span>
+        <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--close"><i data-lucide="x"></i></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="navbar-elite__mobile">
+    <ul class="navbar-elite__mobile-menu">
+      {links.map((link) => (
+        <li class="navbar-elite__mobile-item"><a href={link.href} class="navbar-elite__mobile-link">{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  import { initNavbar } from '../../scripts/navbar';
+  const nav = document.querySelector<HTMLElement>('[data-navbar]');
+  if (nav) initNavbar(nav);
+</script>

@@ -1,0 +1,9 @@
+<button type="button" class="scroll-top" data-scroll-top aria-label="Volver arriba">
+  <i data-lucide="arrow-up"></i>
+</button>
+
+<script>
+  import { initScrollTop } from '../../scripts/scrollTop';
+  const button = document.querySelector<HTMLElement>('[data-scroll-top]');
+  if (button) initScrollTop(button);
+</script>

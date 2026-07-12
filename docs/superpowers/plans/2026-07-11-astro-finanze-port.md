@@ -897,14 +897,16 @@ git commit -m "Add BaseLayout with vendored CSS/JS loading and vendor library in
 - Create: `src/components/sections/Nav.astro`, `src/scripts/navbar.ts`
 
 **Interfaces:**
-- Consumes: `isNavScrolled` from `src/lib/navScroll.ts` (Task 4); `/assets/img/logos/logo-dark.svg`, `/assets/img/logos/logo-white.svg` (Task 3).
-- Produces: `Nav` Astro props `{ theme: 'dark-hero' | 'internal' }` — consumed by `Hero` (Home page, Task 39) and `PageLayout` (Task 15).
+- Consumes: `isNavScrolled` from `src/lib/navScroll.ts` (Task 4); `/assets/img/logos/logo-white.svg` (Task 3).
+- Produces: `Nav` Astro props `{ solid?: boolean }` (default `false`) — consumed by `Hero` (Home page, Task 39, omits the prop) and `PageLayout` (Task 15, passes `solid`).
+
+**Ground-truth correction (found by reading the actual vendored `main.css`, not just the earlier survey summary):** `.navbar-elite` has only two state classes, `.is-scrolled` and `.is-menu-open` — there is no light/dark theme variant. A code comment at `main.css:3220-3226` confirms this is deliberate: the wordmark is always white ink because there is no dark logo variant *in this design*, and the nav background only ever toggles between transparent (over the hero) and solid dark (`--color-secondary`, once scrolled). `.footer-elite` is the same dark `--color-secondary`. So: **always use `logo-white.svg`, never `logo-dark.svg`** for this component — the earlier plan draft's `theme: 'dark-hero' | 'internal'` prop with a logo swap was written before the actual CSS was available and does not match it. `logo-dark.svg` (Task 3) ends up with no consumer in this port; leave the file in place as a starter-template asset but do not force an artificial usage of it.
 
 Nav links (main): Inicio (`/`), Nosotros (`/nosotros`), Servicios (`/servicios`), Proyectos (`/proyectos`), Planes (`/planes`), Blog (`/blog`), Contacto (`/contacto`). Secondary links (Equipo, Testimonios, FAQ) live in the Footer's "Quick Links" column (Task 13), not the main nav, to keep it uncluttered.
 
 - [ ] **Step 1: Read the source markup**
 
-Open `docs/reference/ui-kit-source/dist/index.html` and locate the `navbar-elite` block (it sits inside the same hero comment block as `hero-elite-slider`). Note the exact off-canvas toggle button markup and classes used for desktop vs mobile nav — reuse them 1:1.
+Read `docs/reference/ui-kit-source/dist/index.html` lines 33–71 for the exact `navbar-elite` structure (desktop row + `.navbar-elite__mobile` menu) — reuse it 1:1, replacing the anchor `#`/`#about`/etc. targets with this project's real routes.
 
 - [ ] **Step 2: Write `src/scripts/navbar.ts`**
 
@@ -919,31 +921,69 @@ export function initNavbar(nav: HTMLElement): void {
   updateScrolledClass();
   window.addEventListener('scroll', updateScrolledClass, { passive: true });
 
-  const toggle = nav.querySelector<HTMLButtonElement>('[data-nav-toggle]');
-  const offcanvas = nav.querySelector<HTMLElement>('[data-nav-offcanvas]');
+  const toggle = nav.querySelector<HTMLButtonElement>('.navbar-elite__toggle');
   toggle?.addEventListener('click', () => {
-    offcanvas?.classList.toggle('is-open');
+    const isOpen = nav.classList.toggle('is-menu-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
   });
 }
 ```
 
 - [ ] **Step 3: Write `Nav.astro`**
 
-Build the markup from the source reference (Step 1), parameterizing only the logo variant and initial transparent/solid state on `theme`. Wire the script:
-
 ```astro
 ---
 // src/components/sections/Nav.astro
 interface Props {
-  theme: 'dark-hero' | 'internal';
+  solid?: boolean;
 }
-const { theme } = Astro.props;
-const logoSrc = theme === 'dark-hero' ? '/assets/img/logos/logo-white.svg' : '/assets/img/logos/logo-dark.svg';
+const { solid = false } = Astro.props;
+
+const links = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Proyectos', href: '/proyectos' },
+  { label: 'Planes', href: '/planes' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contacto', href: '/contacto' },
+];
 ---
-<nav class:list={['navbar-elite', { 'navbar-elite--transparent': theme === 'dark-hero' }]} data-navbar>
-  <!-- port exact structure from docs/reference/ui-kit-source/dist/index.html's navbar-elite block here,
-       using {logoSrc} for the <img> src, and the nav links listed in this task's Interfaces note -->
-</nav>
+<header class:list={['navbar-elite', { 'is-scrolled': solid }]} data-navbar>
+  <div class="container">
+    <div class="navbar-elite__row">
+      <a href="/" class="navbar-elite__brand">
+        <img class="navbar-elite__logo-img" src="/assets/img/logos/logo-white.svg" alt="Finanze" />
+      </a>
+
+      <nav class="navbar-elite__nav">
+        <ul class="navbar-elite__menu">
+          {links.map((link) => (
+            <li class="navbar-elite__item"><a href={link.href} class="navbar-elite__link">{link.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <a href="/contacto" class="button-elite navbar-elite__cta">
+        <span class="button-elite__label">Contact Us</span>
+        <span class="button-elite__icon"><i data-lucide="arrow-right"></i></span>
+      </a>
+
+      <button class="navbar-elite__toggle" type="button" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--open"><i data-lucide="menu"></i></span>
+        <span class="navbar-elite__toggle-icon navbar-elite__toggle-icon--close"><i data-lucide="x"></i></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="navbar-elite__mobile">
+    <ul class="navbar-elite__mobile-menu">
+      {links.map((link) => (
+        <li class="navbar-elite__mobile-item"><a href={link.href} class="navbar-elite__mobile-link">{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</header>
 
 <script>
   import { initNavbar } from '../../scripts/navbar';
@@ -954,13 +994,13 @@ const logoSrc = theme === 'dark-hero' ? '/assets/img/logos/logo-white.svg' : '/a
 
 - [ ] **Step 4: Verify in the browser**
 
-Run: `pnpm dev`, open the dev server, temporarily drop `<Nav theme="internal" />` into `src/pages/index.astro` to check it renders styled and the off-canvas toggle works, then remove that temporary insertion (Task 39 wires it for real).
+Run: `pnpm dev`, open the dev server, temporarily drop `<Nav />` into `src/pages/index.astro` to check it renders styled and the mobile toggle works, then remove that temporary insertion (Task 39 wires it for real).
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add src/components/sections/Nav.astro src/scripts/navbar.ts
-git commit -m "Add Nav section with scroll and off-canvas behavior"
+git commit -m "Add Nav section with scroll and mobile-menu behavior"
 ```
 
 ---
@@ -1010,11 +1050,13 @@ git commit -m "Add Footer section with 4-column layout"
 - Create: `src/components/elements/SubHero.astro`, `src/components/elements/CtaBand.astro`
 
 **Interfaces:**
-- Produces: `SubHero` props `{ title: string; breadcrumb: { label: string; href?: string }[] }`; `CtaBand` props `{ heading: string; ctaLabel: string; ctaHref: string }` — both consumed by `PageLayout` (Task 15) and directly by the Home page (Task 39).
+- Produces: `SubHero` props `{ title: string; breadcrumb: { label: string; href?: string }[]; image?: string }`; `CtaBand` props `{ heading: string; description: string; primaryCtaLabel: string; primaryCtaHref: string; secondaryCtaLabel?: string; secondaryCtaHref?: string }` — both consumed by `PageLayout` (Task 15) and directly by the Home page (Task 39).
+
+**Ground truth (read from `docs/reference/ui-kit-source/dist/ui-kit2.html` lines ~2892-2935 and ~3437-3470, not guessed):** `sub-hero` has a background-image variant (`.sub-hero__img` + `.sub-hero__scrim`) and solid no-image variants (`.sub-hero--dark`, `.sub-hero--surface`, `.sub-hero--light`) for pages with no header photo. `cta-band` always has a heading, a description paragraph, and up to two buttons (`.cta-band__btn--solid` and `.cta-band__btn--outline`), plus two purely decorative `.cta-band__decor` spans (no content, just background ornament — render them empty).
 
 - [ ] **Step 1: Read the source markup**
 
-Open `docs/reference/ui-kit-source/dist/ui-kit2.html`, locate the `sub-hero` and `cta-band` entries under Elements.
+Read `docs/reference/ui-kit-source/dist/ui-kit2.html` lines 2892-2935 (`sub-hero`) and lines 3437-3470 (`cta-band`) for the exact structure.
 
 - [ ] **Step 2: Write `SubHero.astro`**
 
@@ -1028,17 +1070,32 @@ interface BreadcrumbItem {
 interface Props {
   title: string;
   breadcrumb: BreadcrumbItem[];
+  image?: string;
 }
-const { title, breadcrumb } = Astro.props;
+const { title, breadcrumb, image } = Astro.props;
 ---
-<section class="sub-hero">
-  <h1>{title}</h1>
-  <nav class="sub-hero__breadcrumb" aria-label="Breadcrumb">
-    {breadcrumb.map((item) => (
-      item.href ? <a href={item.href}>{item.label}</a> : <span>{item.label}</span>
-    ))}
-  </nav>
-  <!-- reconcile the exact sub-hero markup/classes from docs/reference/ui-kit-source/dist/ui-kit2.html here -->
+<section class:list={['sub-hero', { 'sub-hero--dark': !image }]}>
+  {image && (
+    <>
+      <img class="sub-hero__img" src={image} alt="" loading="eager" />
+      <span class="sub-hero__scrim"></span>
+    </>
+  )}
+  <div class="sub-hero__content">
+    <h1 class="sub-hero__title">{title}</h1>
+    <nav class="sub-hero__breadcrumb" aria-label="breadcrumb">
+      {breadcrumb.map((item, index) => (
+        <>
+          {item.href ? (
+            <a href={item.href} class="sub-hero__breadcrumb-link">{item.label}</a>
+          ) : (
+            <span class="sub-hero__breadcrumb-current">{item.label}</span>
+          )}
+          {index < breadcrumb.length - 1 && <span class="sub-hero__breadcrumb-sep">/</span>}
+        </>
+      ))}
+    </nav>
+  </div>
 </section>
 ```
 
@@ -1049,16 +1106,28 @@ const { title, breadcrumb } = Astro.props;
 // src/components/elements/CtaBand.astro
 interface Props {
   heading: string;
-  ctaLabel: string;
-  ctaHref: string;
+  description: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
 }
-const { heading, ctaLabel, ctaHref } = Astro.props;
+const { heading, description, primaryCtaLabel, primaryCtaHref, secondaryCtaLabel, secondaryCtaHref } = Astro.props;
 ---
-<section class="cta-band">
-  <h2>{heading}</h2>
-  <a class="button-elite" href={ctaHref}>{ctaLabel}</a>
-  <!-- reconcile exact cta-band markup/classes from docs/reference/ui-kit-source/dist/ui-kit2.html here -->
-</section>
+<div class="cta-band">
+  <span class="cta-band__decor"></span>
+  <span class="cta-band__decor cta-band__decor--sm"></span>
+  <div class="cta-band__content">
+    <h3 class="cta-band__title">{heading}</h3>
+    <p class="cta-band__desc">{description}</p>
+    <div class="cta-band__actions">
+      <a href={primaryCtaHref} class="cta-band__btn cta-band__btn--solid">{primaryCtaLabel}</a>
+      {secondaryCtaLabel && secondaryCtaHref && (
+        <a href={secondaryCtaHref} class="cta-band__btn cta-band__btn--outline">{secondaryCtaLabel}</a>
+      )}
+    </div>
+  </div>
+</div>
 ```
 
 - [ ] **Step 4: Verify**
@@ -1081,8 +1150,8 @@ git commit -m "Add SubHero and CtaBand elements"
 - Create: `src/layouts/PageLayout.astro`
 
 **Interfaces:**
-- Consumes: `BaseLayout` (Task 11), `Nav` with `theme="internal"` (Task 12), `Footer` (Task 13), `SubHero`, `CtaBand` (Task 14), `WhatsAppButton` (Task 16).
-- Produces: `PageLayout` props `{ title: string; description: string; subHeroTitle: string; breadcrumb: { label: string; href?: string }[]; ctaHeading: string; ctaLabel: string; ctaHref: string }` with a default `<slot />` for page-specific content — consumed by every internal page in Phase 6.
+- Consumes: `BaseLayout` (Task 11), `Nav` with `solid` (Task 12), `Footer` (Task 13, which itself renders `WhatsAppButton` per Task 16's correction), `SubHero`, `CtaBand` (Task 14).
+- Produces: `PageLayout` props `{ title: string; description: string; subHeroTitle: string; breadcrumb: { label: string; href?: string }[]; subHeroImage?: string; ctaHeading: string; ctaDescription: string; ctaPrimaryLabel: string; ctaPrimaryHref: string; ctaSecondaryLabel?: string; ctaSecondaryHref?: string }` with a default `<slot />` for page-specific content — consumed by every internal page in Phase 6.
 
 - [ ] **Step 1: Write `PageLayout.astro`**
 
@@ -1094,7 +1163,6 @@ import Nav from '../components/sections/Nav.astro';
 import Footer from '../components/sections/Footer.astro';
 import SubHero from '../components/elements/SubHero.astro';
 import CtaBand from '../components/elements/CtaBand.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface BreadcrumbItem {
   label: string;
@@ -1105,32 +1173,45 @@ interface Props {
   description: string;
   subHeroTitle: string;
   breadcrumb: BreadcrumbItem[];
+  subHeroImage?: string;
   ctaHeading: string;
-  ctaLabel: string;
-  ctaHref: string;
+  ctaDescription: string;
+  ctaPrimaryLabel: string;
+  ctaPrimaryHref: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref?: string;
 }
-const { title, description, subHeroTitle, breadcrumb, ctaHeading, ctaLabel, ctaHref } = Astro.props;
+const {
+  title, description, subHeroTitle, breadcrumb, subHeroImage,
+  ctaHeading, ctaDescription, ctaPrimaryLabel, ctaPrimaryHref, ctaSecondaryLabel, ctaSecondaryHref,
+} = Astro.props;
 ---
 <BaseLayout title={title} description={description}>
-  <Nav theme="internal" />
-  <SubHero title={subHeroTitle} breadcrumb={breadcrumb} />
+  <Nav solid />
+  <SubHero title={subHeroTitle} breadcrumb={breadcrumb} image={subHeroImage} />
   <slot />
-  <CtaBand heading={ctaHeading} ctaLabel={ctaLabel} ctaHref={ctaHref} />
+  <CtaBand
+    heading={ctaHeading}
+    description={ctaDescription}
+    primaryCtaLabel={ctaPrimaryLabel}
+    primaryCtaHref={ctaPrimaryHref}
+    secondaryCtaLabel={ctaSecondaryLabel}
+    secondaryCtaHref={ctaSecondaryHref}
+  />
   <Footer />
-  <WhatsAppButton />
 </BaseLayout>
 ```
 
 - [ ] **Step 2: Verify**
 
 Run: `pnpm astro check`
-Expected: no type errors (Task 16 must exist first — do that task before running this check if working out of order).
+Expected: no type errors.
 
 - [ ] **Step 3: Commit**
 
 ```bash
 git add src/layouts/PageLayout.astro
-git commit -m "Add PageLayout composing Nav, SubHero, CtaBand, Footer, WhatsAppButton"
+git commit -m "Add PageLayout composing Nav, SubHero, CtaBand, Footer"
 ```
 
 ---
@@ -1142,12 +1223,14 @@ git commit -m "Add PageLayout composing Nav, SubHero, CtaBand, Footer, WhatsAppB
 - Create: `.env.example`
 
 **Interfaces:**
-- Produces: `WhatsAppButton` Astro component, no props, reads `import.meta.env.PUBLIC_WHATSAPP_NUMBER` — consumed by `PageLayout` (Task 15) and the Home page (Task 39).
+- Produces: `WhatsAppButton` Astro component, no props, reads `import.meta.env.PUBLIC_WHATSAPP_NUMBER` — consumed inline by `ContactStrip`'s usage in `Footer.astro` (not `PageLayout` directly; see correction below).
 
-- [ ] **Step 1: Grep the real class name**
+**Ground-truth correction:** `grep -n "wa-btn\|whatsapp" public/assets/css/main.css` returns **no matches at all** — this UI-kit has no floating-WhatsApp-button component, unlike a similar prior project CLAUDE.md's gotcha #7 references (that gotcha describes a mistake made porting a *different* source kit, not this one; the underlying rule — never invent a class — still applies and is exactly why this task changes shape here). Since there is no CSS to support a fixed floating badge without inventing one, do **not** build a floating button. Instead, render the WhatsApp link as one more entry in `ContactStrip` (Task 26), reusing its existing real classes (`.contact-strip__item`, `.contact-strip__icon`, `.contact-strip__label`, `.contact-strip__value`) — a contact channel is exactly what `ContactStrip` already models, so this is a faithful reuse, not a workaround. `PageLayout` and the Home page no longer render `<WhatsAppButton />` directly; `Footer.astro` renders it next to `<ContactStrip />` (both already there per Task 26 step 6).
+
+- [ ] **Step 1: Confirm there is no dedicated WhatsApp class**
 
 Run: `grep -n "wa-btn\|whatsapp" public/assets/css/main.css`
-Expected: at least one match — use that exact class in Step 2 (do not invent `whatsapp-float` or similar; this is the exact mistake flagged in CLAUDE.md gotcha #7).
+Expected: no output. This confirms the correction above — do not invent a `whatsapp-float`-style class to fill the gap.
 
 - [ ] **Step 2: Write `WhatsAppButton.astro`**
 
@@ -1158,18 +1241,17 @@ const number = import.meta.env.PUBLIC_WHATSAPP_NUMBER;
 ---
 {number && (
   <a
-    class="wa-btn"
+    class="contact-strip__item"
     href={`https://wa.me/${number}`}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Chatear por WhatsApp"
   >
-    <!-- use the icon markup found alongside the wa-btn class in main.css/reference HTML -->
+    <span class="contact-strip__icon"><i data-lucide="message-circle"></i></span>
+    <span class="contact-strip__label">WhatsApp</span>
+    <span class="contact-strip__value">{number}</span>
   </a>
 )}
 ```
-
-(Replace `wa-btn` above with whatever Step 1 actually found, if different.)
 
 - [ ] **Step 3: Write `.env.example`**
 
@@ -1198,11 +1280,11 @@ git commit -m "Add env-gated WhatsAppButton"
 
 **Interfaces:**
 - Consumes: `shouldShowScrollTop` from `src/lib/scrollTop.ts` (Task 5).
-- Produces: `ScrollTop` Astro component, no props — consumed by `PageLayout` (add it alongside `WhatsAppButton` — update Task 15's file) and the Home page (Task 39).
+- Produces: `ScrollTop` Astro component, no props — consumed by `PageLayout` (update Task 15's file) and the Home page (Task 39).
 
 - [ ] **Step 1: Grep the real class name**
 
-Run: `grep -n "scroll-top\|scrolltop" public/assets/css/main.css`
+Run: `grep -n "scroll-top\|scrolltop" public/assets/css/main.css`. The real markup (already confirmed in `docs/reference/ui-kit-source/dist/index.html:609-611`) is a plain button with a single `arrow-up` icon — no extra wrapper classes.
 
 - [ ] **Step 2: Write `src/scripts/scrollTop.ts`**
 
@@ -1227,7 +1309,7 @@ export function initScrollTop(button: HTMLElement): void {
 // src/components/elements/ScrollTop.astro
 ---
 <button type="button" class="scroll-top" data-scroll-top aria-label="Volver arriba">
-  <!-- port exact icon/markup found alongside the scroll-top class -->
+  <i data-lucide="arrow-up"></i>
 </button>
 
 <script>
@@ -1239,7 +1321,7 @@ export function initScrollTop(button: HTMLElement): void {
 
 - [ ] **Step 4: Add it to `PageLayout.astro`**
 
-In `src/layouts/PageLayout.astro` (Task 15), import and render `<ScrollTop />` next to `<WhatsAppButton />`.
+In `src/layouts/PageLayout.astro` (Task 15), import and render `<ScrollTop />` right before `</BaseLayout>`.
 
 - [ ] **Step 5: Verify**
 
@@ -1940,6 +2022,8 @@ const { quote, author } = Astro.props;
 
 - [ ] **Step 5: Write `ContactStrip.astro`**
 
+Ground truth read from `docs/reference/ui-kit-source/dist/ui-kit2.html` lines 3350-3373: each item is icon + a label/value pair in a plain wrapping `<div>`.
+
 ```astro
 ---
 // src/components/elements/ContactStrip.astro
@@ -1951,15 +2035,40 @@ interface Props {
 const { phone, email, address } = Astro.props;
 ---
 <div class="contact-strip">
-  <a href={`tel:${phone}`}>{phone}</a>
-  <a href={`mailto:${email}`}>{email}</a>
-  <span>{address}</span>
+  <a class="contact-strip__item" href={`mailto:${email}`}>
+    <span class="contact-strip__icon"><i data-lucide="mail"></i></span>
+    <div>
+      <span class="contact-strip__label">Correo</span>
+      <span class="contact-strip__value">{email}</span>
+    </div>
+  </a>
+  <a class="contact-strip__item" href={`tel:${phone}`}>
+    <span class="contact-strip__icon"><i data-lucide="phone"></i></span>
+    <div>
+      <span class="contact-strip__label">Teléfono</span>
+      <span class="contact-strip__value">{phone}</span>
+    </div>
+  </a>
+  <div class="contact-strip__item">
+    <span class="contact-strip__icon"><i data-lucide="map-pin"></i></span>
+    <div>
+      <span class="contact-strip__label">Ubicación</span>
+      <span class="contact-strip__value">{address}</span>
+    </div>
+  </div>
 </div>
 ```
 
-- [ ] **Step 6: Wire `ContactStrip` into `Footer.astro`**
+- [ ] **Step 6: Wire `ContactStrip` and `WhatsAppButton` into `Footer.astro`**
 
-Edit `src/components/sections/Footer.astro` (Task 13) to render `<ContactStrip phone="+51 1 234 5678" email="contacto@finanze.com" address="Lima, Perú" />` in the "About Company" column.
+Edit `src/components/sections/Footer.astro` (Task 13) to import both and render, in the "About Company" column:
+
+```astro
+<ContactStrip phone="+51 987 654 321" email="contacto@finanze.com" address="Lima, Perú" />
+<WhatsAppButton />
+```
+
+`WhatsAppButton` (Task 16) already renders a `.contact-strip__item`-classed link matching this same visual family, so it drops in cleanly right after `ContactStrip` and renders nothing when `PUBLIC_WHATSAPP_NUMBER` is unset.
 
 - [ ] **Step 7: Verify + commit**
 
@@ -1967,7 +2076,7 @@ Run: `pnpm build`. Then:
 
 ```bash
 git add src/components/elements/PreviewVideo.astro src/components/elements/ExpertiseItemElite.astro src/components/elements/SpecialQuote.astro src/components/elements/ContactStrip.astro src/components/sections/Footer.astro
-git commit -m "Add PreviewVideo, ExpertiseItemElite, SpecialQuote, ContactStrip elements"
+git commit -m "Add PreviewVideo, ExpertiseItemElite, SpecialQuote, ContactStrip elements; wire WhatsAppButton into Footer"
 ```
 
 ---
@@ -2173,7 +2282,7 @@ git commit -m "Add content collections config and seed data for all 6 collection
 - Create: `src/components/sections/Hero.astro`, `src/scripts/heroSlider.ts`
 
 **Interfaces:**
-- Consumes: `Nav` with `theme="dark-hero"` (Task 12), `Button` (Task 18).
+- Consumes: `Nav` (Task 12, default transparent-over-hero state), `Button` (Task 18).
 - Produces: `Hero` props `{ slides: { title: string; subtitle: string; image: string; ctaLabel: string; ctaHref: string }[] }` — consumed by the Home page (Task 39).
 
 - [ ] **Step 1: Read the source markup**
@@ -2221,7 +2330,7 @@ interface Props {
 const { slides } = Astro.props;
 ---
 <section class="hero-elite-slider swiper">
-  <Nav theme="dark-hero" />
+  <Nav />
   <div class="swiper-wrapper">
     {slides.map((slide) => (
       <div class="swiper-slide" style={`background-image: url(${slide.image})`}>
@@ -2871,7 +2980,7 @@ git commit -m "Add ContactForm section wired to validateContactForm"
 - Create: `src/pages/index.astro`
 
 **Interfaces:**
-- Consumes: `BaseLayout` (Task 11), `Hero` (Task 28), `Marquee` (Task 29), `AboutSection` (Task 30), `ServicesSection` (Task 31), `ProjectsSection` (Task 32), `TestimonialsSection` (Task 33), `CtaBand` (Task 14), `Footer` (Task 13), `WhatsAppButton` (Task 16), `ScrollTop` (Task 17), `getCollection` from `astro:content` for `services`/`projects`/`testimonials`.
+- Consumes: `BaseLayout` (Task 11), `Hero` (Task 28), `Marquee` (Task 29), `AboutSection` (Task 30), `ServicesSection` (Task 31), `ProjectsSection` (Task 32), `TestimonialsSection` (Task 33), `CtaBand` (Task 14), `Footer` (Task 13, which renders `WhatsAppButton` itself per Task 16's correction), `ScrollTop` (Task 17), `getCollection` from `astro:content` for `services`/`projects`/`testimonials`.
 
 - [ ] **Step 1: Write `src/pages/index.astro`**
 
@@ -2888,7 +2997,6 @@ import ProjectsSection from '../components/sections/ProjectsSection.astro';
 import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
 import CtaBand from '../components/elements/CtaBand.astro';
 import Footer from '../components/sections/Footer.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
 import ScrollTop from '../components/elements/ScrollTop.astro';
 
 const services = await getCollection('services');
@@ -2918,9 +3026,15 @@ const aboutItems = [
   <ServicesSection services={services} />
   <ProjectsSection projects={projects} />
   <TestimonialsSection testimonials={testimonials} />
-  <CtaBand heading="¿Listo para dar el siguiente paso?" ctaLabel="Contáctanos" ctaHref="/contacto" />
+  <CtaBand
+    heading="¿Listo para dar el siguiente paso?"
+    description="Agenda una sesión con nuestro equipo y descubre cómo podemos ayudarte a crecer."
+    primaryCtaLabel="Contáctanos"
+    primaryCtaHref="/contacto"
+    secondaryCtaLabel="Ver proyectos"
+    secondaryCtaHref="/proyectos"
+  />
   <Footer />
-  <WhatsAppButton />
   <ScrollTop />
 </BaseLayout>
 ```
@@ -3546,7 +3660,7 @@ import Nav from '../components/sections/Nav.astro';
 import Footer from '../components/sections/Footer.astro';
 ---
 <BaseLayout title="Página no encontrada | Finanze" description="La página que buscas no existe.">
-  <Nav theme="internal" />
+  <Nav solid />
   <section class="not-found">
     <h1>404</h1>
     <p>La página que buscas no existe.</p>
